@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Death Age Predictor — PPF</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{margin:0;background:linear-gradient(135deg,rgba(10,1,24,0.6),rgba(37,0,71,0.6)),url('astropage.png') center/cover no-repeat;color:#fff;min-height:100vh}
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:0}
+    .wrap{position:relative;z-index:2;max-width:800px;margin:28px auto;padding:16px}
+    .card{background:rgba(255,255,255,0.04);padding:18px;border-radius:14px;backdrop-filter:blur(6px)}
+    label{display:block;margin-top:10px}
+    input,select{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff;margin-top:6px}
+    .btn{padding:10px 14px;border-radius:10px;border:none;background:linear-gradient(90deg,#8b5cf6,#06b6d4);color:#fff;cursor:pointer;margin-top:12px}
+    .result{margin-top:12px;background:rgba(0,0,0,0.45);padding:12px;border-radius:10px}
+  </style>
+</head>
+<body>
+  <div class="overlay" aria-hidden="true"></div>
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <div><strong>PPF</strong><div style="font-size:12px;color:rgba(255,255,255,0.7)">Death Age Predictor (fun)</div></div>
+      <div><button class="btn" onclick="location.href='index.html'">Home</button></div>
+    </div>
+
+    <div class="card">
+      <h2>Death Age Predictor (Fun)</h2>
+      <label>Current Age</label><input id="age" type="number" min="1" max="120" placeholder="e.g., 25">
+      <label>Diet</label>
+      <select id="diet">
+        <option value="balanced">Balanced</option>
+        <option value="veg">Vegetarian</option>
+        <option value="nonveg">Non-Vegetarian</option>
+        <option value="heavy">Heavy/Unhealthy</option>
+      </select>
+      <label>Smoking</label>
+      <select id="smoke"><option value="no">No</option><option value="yes">Yes</option></select>
+      <label>Alcohol</label>
+      <select id="alc"><option value="no">No</option><option value="occasional">Occasional</option><option value="regular">Regular</option></select>
+      <button class="btn" id="runBtn">Estimate</button>
+
+      <div id="out" class="result" style="display:none"></div>
+    </div>
+  </div>
+
+<script>
+document.getElementById('runBtn').addEventListener('click', ()=>{
+  const age = Number(document.getElementById('age').value) || 25;
+  const diet = document.getElementById('diet').value;
+  const smoke = document.getElementById('smoke').value;
+  const alc = document.getElementById('alc').value;
+  let base = 78;
+  if(diet==='heavy') base -= 6;
+  if(diet==='nonveg') base -= 1;
+  if(smoke==='yes') base -= 8;
+  if(alc==='regular') base -= 6;
+  if(age>60) base -= Math.min(10, age-60);
+  const low = Math.max(age, Math.round(base - 6 + (Math.random()*6)));
+  const high = Math.max(age, Math.round(base + 6 + (Math.random()*6)));
+  const out = document.getElementById('out');
+  out.style.display='block';
+  out.innerHTML = `Estimated lifespan: <strong>${low} - ${high} years</strong><br/>Advice: Improve diet, reduce smoking/alcohol, exercise regularly for better health.`;
+  saveHistory('death',{age,diet,smoke,alc,low,high});
+});
+
+function saveHistory(type,obj){
+  try{
+    const logged = JSON.parse(localStorage.getItem('ppf_logged')||'null'); if(!logged) return;
+    const users = JSON.parse(localStorage.getItem('ppf_users')||'[]'); const idx = users.findIndex(u=>u.username===logged.username || u.email===logged.email);
+    if(idx>-1){ users[idx].history = users[idx].history||[]; users[idx].history.push({type,timestamp:Date.now(),data:obj}); localStorage.setItem('ppf_users',JSON.stringify(users)); }
+  }catch(e){}
+}
+</script>
+</body>
+</html>

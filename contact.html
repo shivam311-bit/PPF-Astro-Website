@@ -1,0 +1,57 @@
+ <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Contact — PPF</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{margin:0;background:linear-gradient(135deg,rgba(10,1,24,0.6),rgba(37,0,71,0.6)),url('astropage.png') center/cover no-repeat;color:#fff;min-height:100vh}
+    .nav{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;gap:12px;padding:12px 20px;background:rgba(0,0,0,0.35);backdrop-filter:blur(6px);z-index:1000}
+    .nav img{height:40px;width:40px;border-radius:50%}
+    .container{max-width:700px;margin:100px auto;padding:22px;background:rgba(0,0,0,0.45);border-radius:14px}
+    label{display:block;margin-top:12px}
+    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff;margin-top:6px}
+    .btn{padding:10px 14px;border-radius:8px;border:none;background:linear-gradient(90deg,#8b5cf6,#06b6d4);color:#fff;cursor:pointer;margin-top:12px}
+    p.small{font-size:13px;color:rgba(255,255,255,0.75)}
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <a href="index.html"><img src="astrologo.webp" alt="PPF Logo"></a>
+    <div style="font-weight:700">PPF</div>
+    <div style="margin-left:auto"><a href="index.html" class="btn">Home</a></div>
+  </div>
+
+  <main class="container">
+    <h1>Contact Us</h1>
+    <p class="small">Have a question, partnership idea, or need help? Fill the form — we'll reply by email.</p>
+
+    <label>Your Name</label>
+    <input id="name" placeholder="Your full name">
+
+    <label>Your Email</label>
+    <input id="email" placeholder="you@example.com">
+
+    <label>Message</label>
+    <textarea id="message" rows="6" placeholder="Write your message here..."></textarea>
+
+    <button class="btn" id="sendBtn">Send Message</button>
+
+    <p class="small" style="margin-top:14px">If the form doesn't work, email us directly at <a href="mailto:stha85620@gmail.com" style="color:#9be3ff">stha85620@gmail.com</a></p>
+  </main>
+
+  <script>
+    document.getElementById('sendBtn').addEventListener('click', ()=>{
+      const n = document.getElementById('name').value.trim();
+      const e = document.getElementById('email').value.trim();
+      const m = document.getElementById('message').value.trim();
+      if(!n||!e||!m){ return alert('Please fill all fields'); }
+      // Client-only fallback: build mailto link
+      const subject = encodeURIComponent('PPF Contact Form: ' + n);
+      const body = encodeURIComponent('Name: '+n + '\\nEmail: '+e+'\\n\\n'+m);
+      window.location.href = 'mailto:stha85620@gmail.com?subject='+subject+'&body='+body;
+    });
+  </script>
+</body>
+</html>

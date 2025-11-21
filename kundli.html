@@ -1,0 +1,357 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kundli Generator - PPF</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('astropage.png') no-repeat center center/cover;
+      color: white;
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      backdrop-filter: blur(3px);
+    }
+    .container {
+      width: 90%;
+      max-width: 600px;
+      margin: 60px auto;
+      background: rgba(255,255,255,0.12);
+      padding: 30px;
+      border-radius: 18px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    }
+    h1 {
+      text-align: center;
+      color: #7ee8fa;
+      margin-bottom: 25px;
+    }
+    label {
+      font-size: 18px;
+      margin-top: 10px;
+      display: block;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+    }
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 15px;
+      background: #7ee8fa;
+      color: black;
+      border: none;
+      font-size: 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #9df4ff;
+    }
+    .result {
+      margin-top: 25px;
+      padding: 20px;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.4);
+      font-size: 18px;
+    }
+    table td {
+      padding: 8px 5px;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="overlay"></div>
+
+  <div class="container">
+    <h1>Generate Kundli</h1>
+
+    <label>Full Name</label>
+    <input type="text" id="name" placeholder="Enter your name" />
+
+    <label>Date of Birth</label>
+    <input type="date" id="dob" />
+
+    <label>Time of Birth</label>
+    <input type="time" id="tob" />
+
+    <button onclick="generateKundli()">Generate</button>
+
+    <div id="result" class="result" style="display:none;"></div>
+
+    <div class="result" id="fullChart" style="display:none; margin-top:20px; background:rgba(0,0,0,0.55); padding:20px; border-radius:15px;">
+
+      <h2 style="color:#7ee8fa; text-align:center;">Full Kundli Chart</h2>
+
+      <h3>12 Houses (Bhava Chart)</h3>
+      <table style="width:100%; border-collapse:collapse; font-size:16px;">
+        <tr><td>1st House (Lagna)</td><td>Personality, physical appearance</td></tr>
+        <tr><td>2nd House</td><td>Finance, speech, family</td></tr>
+        <tr><td>3rd House</td><td>Courage, siblings, communication</td></tr>
+        <tr><td>4th House</td><td>Home, mother, real estate</td></tr>
+        <tr><td>5th House</td><td>Education, love, creativity</td></tr>
+        <tr><td>6th House</td><td>Health, enemies, debts</td></tr>
+        <tr><td>7th House</td><td>Marriage, partnerships</td></tr>
+        <tr><td>8th House</td><td>Sudden events, transformation</td></tr>
+        <tr><td>9th House</td><td>Luck, spirituality, long travel</td></tr>
+        <tr><td>10th House</td><td>Career, reputation</td></tr>
+        <tr><td>11th House</td><td>Income, gains, networking</td></tr>
+        <tr><td>12th House</td><td>Expenses, moksha, foreign stay</td></tr>
+      </table>
+
+      <br>
+
+      <h3>Nakshatra (Birth Star)</h3>
+      <div id="nakshatraResult"></div>
+
+      <br>
+
+      <h3>Dasha Periods</h3>
+      <ul>
+        <li>Ketu – 7 years</li>
+        <li>Venus – 20 years</li>
+        <li>Sun – 6 years</li>
+        <li>Moon – 10 years</li>
+        <li>Mars – 7 years</li>
+        <li>Rahu – 18 years</li>
+        <li>Jupiter – 16 years</li>
+        <li>Saturn – 19 years</li>
+        <li>Mercury – 17 years</li>
+      </ul>
+
+      <br>
+
+      <h3>Moon Sign</h3>
+      <div id="moonSign"></div>
+
+    </div>
+  </div>
+
+<script>
+/* ----------------------------
+   MAIN GENERATOR
+-----------------------------*/
+function generateKundli() {
+  const name = document.getElementById("name").value;
+  const dob = document.getElementById("dob").value;
+  const tob = document.getElementById("tob").value;
+
+  if (!name || !dob || !tob) {
+    alert("Please fill all fields.");
+    return;
+  }
+
+  const zodiac = getZodiac(dob);
+  const nakshatra = getNakshatra(dob);
+  const moonSignCalc = getMoonSign(dob);
+
+  document.getElementById("result").style.display = "block";
+  document.getElementById("fullChart").style.display = "block";
+
+  document.getElementById("result").innerHTML = `
+    <b>Name:</b> ${name}<br>
+    <b>Date of Birth:</b> ${dob}<br>
+    <b>Time of Birth:</b> ${tob}<br><br>
+    <b>Zodiac Sign:</b> ${zodiac}<br>
+  `;
+
+  document.getElementById("nakshatraResult").innerHTML = `
+    <b>Nakshatra:</b> ${nakshatra.nakshatra}<br>
+    <b>Pada:</b> ${nakshatra.pada}
+  `;
+
+  document.getElementById("moonSign").innerHTML = `
+    <b>Moon Sign (Rashi):</b> ${moonSignCalc}
+  `;
+}
+
+/* ----------------------------
+   ZODIAC SIGN (SUN SIGN)
+-----------------------------*/
+function getZodiac(date) {
+  const month = new Date(date).getMonth() + 1;
+  const day = new Date(date).getDate();
+
+  if ((month==3 && day>=21) || (month==4 && day<=19)) return "Aries";
+  if ((month==4 && day>=20) || (month==5 && day<=20)) return "Taurus";
+  if ((month==5 && day>=21) || (month==6 && day<=20)) return "Gemini";
+  if ((month==6 && day>=21) || (month==7 && day<=22)) return "Cancer";
+  if ((month==7 && day>=23) || (month==8 && day<=22)) return "Leo";
+  if ((month==8 && day>=23) || (month==9 && day<=22)) return "Virgo";
+  if ((month==9 && day>=23) || (month==10 && day<=22)) return "Libra";
+  if ((month==10 && day>=23) || (month==11 && day<=21)) return "Scorpio";
+  if ((month==11 && day>=22) || (month==12 && day<=21)) return "Sagittarius";
+  if ((month==12 && day>=22) || (month==1 && day<=19)) return "Capricorn";
+  if ((month==1 && day>=20) || (month==2 && day<=18)) return "Aquarius";
+  if ((month==2 && day>=19) || (month==3 && day<=20)) return "Pisces";
+}
+
+/* ----------------------------
+   NAKSHATRA CALCULATION
+-----------------------------*/
+function getNakshatra(date) {
+  const DOB = new Date(date);
+  const start = new Date("2000-01-01");
+  const diffDays = Math.floor((DOB - start) / (1000 * 60 * 60 * 24));
+
+  let moonDegree = (diffDays * 13.176) % 360;
+  let nakshatraIndex = Math.floor(moonDegree / (13.3333));
+  let pada = Math.floor((moonDegree % 13.3333) / 3.3333) + 1;
+
+  const nakshatras = [
+    "Ashwini","Bharani","Krittika","Rohini","Mrigashira",
+    "Ardra","Punarvasu","Pushya","Ashlesha","Magha","Purva Phalguni",
+    "Uttara Phalguni","Hasta","Chitra","Swati","Vishakha","Anuradha",
+    "Jyeshtha","Mula","Purva Ashadha","Uttara Ashadha","Shravana",
+    "Dhanishta","Shatabhisha","Purva Bhadrapada","Uttara Bhadrapada","Revati"
+  ];
+
+  return {
+    nakshatra: nakshatras[nakshatraIndex],
+    pada: pada
+  };
+}
+
+/* ----------------------------
+   MOON SIGN (RASHI)
+-----------------------------*/
+function getMoonSign(date) {
+  const DOB = new Date(date);
+  const base = new Date("2000-01-01");
+  const diff = Math.floor((DOB - base) / (1000 * 60 * 60 * 24));
+
+  let moonDegree = (diff * 13.176) % 360;
+
+  if (moonDegree < 30) return "Aries";
+  if (moonDegree < 60) return "Taurus";
+  if (moonDegree < 90) return "Gemini";
+  if (moonDegree < 120) return "Cancer";
+  if (moonDegree < 150) return "Leo";
+  if (moonDegree < 180) return "Virgo";
+  if (moonDegree < 210) return "Libra";
+  if (moonDegree < 240) return "Scorpio";
+  if (moonDegree < 270) return "Sagittarius";
+  if (moonDegree < 300) return "Capricorn";
+  if (moonDegree < 330) return "Aquarius";
+  return "Pisces";
+}
+</script>
+<script>
+function getDailyLuckyData() {
+const today = new Date().toISOString().split('T')[0];
+let saved = localStorage.getItem('luckyData');
+
+
+if (saved) {
+saved = JSON.parse(saved);
+if (saved.date === today) return saved; // return saved data for today
+}
+
+
+const colors = ["Blue", "Red", "Green", "Purple", "Black", "White", "Yellow", "Orange", "Pink", "Silver", "Gold"];
+const times = ["6 AM - 8 AM", "9 AM - 11 AM", "1 PM - 3 PM", "4 PM - 6 PM", "7 PM - 9 PM"];
+
+
+const luckyData = {
+date: today,
+color: colors[Math.floor(Math.random() * colors.length)],
+number: Math.floor(Math.random() * 99) + 1,
+time: times[Math.floor(Math.random() * times.length)]
+};
+
+
+localStorage.setItem('luckyData', JSON.stringify(luckyData));
+return luckyData;
+}
+
+
+// Display Lucky Table
+function displayLuckyTable() {
+const lucky = getDailyLuckyData();
+const table = `
+<h2 style="color:#7ee8fa; text-align:center;">Today's Lucky Table</h2>
+<table style="width:100%; font-size:18px; border-collapse:collapse;">
+<tr><td><b>Lucky Color:</b></td><td>${lucky.color}</td></tr>
+<tr><td><b>Lucky Number:</b></td><td>${lucky.number}</td></tr>
+<tr><td><b>Lucky Time:</b></td><td>${lucky.time}</td></tr>
+</table>
+`;
+document.getElementById('luckyTable').innerHTML = table;
+}
+
+
+// Registration & Login
+function registerUser() {
+const user = document.getElementById('regUser').value;
+const pass = document.getElementById('regPass').value;
+if (!user || !pass) return alert("Fill all details");
+
+
+localStorage.setItem('kundliUser', JSON.stringify({ user, pass }));
+alert("Registration Successful!");
+}
+
+
+function loginUser() {
+const user = document.getElementById('logUser').value;
+const pass = document.getElementById('logPass').value;
+
+
+const saved = JSON.parse(localStorage.getItem('kundliUser'));
+
+
+if (saved && saved.user === user && saved.pass === pass) {
+document.getElementById('loginBox').style.display = 'none';
+document.getElementById('luckySection').style.display = 'block';
+displayLuckyTable();
+} else {
+alert("Incorrect username or password!");
+}
+}
+</script>
+
+
+<!-- Login/Register System -->
+<div id="loginBox" style="margin:30px auto; width:90%; max-width:500px; background:rgba(255,255,255,0.15); padding:20px; border-radius:15px;">
+<h2 style="text-align:center; color:#7ee8fa;">Login to View Today's Luck</h2>
+
+
+<h3>Register</h3>
+<input type="text" id="regUser" placeholder="Create username">
+<input type="password" id="regPass" placeholder="Create password" style="margin-top:10px;">
+<button onclick="registerUser()">Register</button>
+
+
+<h3 style="margin-top:25px;">Login</h3>
+<input type="text" id="logUser" placeholder="Enter username">
+<input type="password" id="logPass" placeholder="Enter password" style="margin-top:10px;">
+<button onclick="loginUser()">Login</button>
+</div>
+
+
+<!-- Lucky Table (Visible After Login) -->
+<div id="luckySection" style="display:none; width:90%; max-width:500px; margin:20px auto; background:rgba(255,255,255,0.15); padding:20px; border-radius:15px;">
+<div id="luckyTable"></div>
+</div>
+
+</body>
+</html>
