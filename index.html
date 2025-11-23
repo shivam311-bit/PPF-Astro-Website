@@ -1,4 +1,4 @@
- <!doctype html>
+  <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
@@ -28,27 +28,43 @@
     table{width:100%;border-collapse:collapse;color:#fff}
     th,td{padding:12px;border-bottom:1px solid rgba(255,255,255,0.04);text-align:left}
     th{background:rgba(255,255,255,0.04)}
-    .lucky{display:flex;gap:12px;align-items:center}
-    .sw{width:36px;height:28px;border-radius:6px;border:2px solid rgba(255,255,255,0.06)}
     footer{margin-top:16px;color:rgba(255,255,255,0.6);font-size:13px;text-align:center}
-    @media(max-width:720px){.wrap{padding:14px}table{font-size:13px}}
+    .blog-card{
+      background:rgba(255,255,255,0.03);
+      padding:16px;
+      border-radius:14px;
+      margin:10px 0;
+      backdrop-filter:blur(6px);
+      transition:0.3s;
+      cursor:pointer;
+      box-shadow:0 6px 22px rgba(0,0,0,0.3);
+    }
+    .blog-card:hover{
+      transform:translateY(-4px);
+      background:rgba(255,255,255,0.06);
+    }
+    .blog-title{font-size:17px;font-weight:600;margin-bottom:6px;color:#aee2ff}
+    .blog-desc{font-size:13px;color:rgba(255,255,255,0.8)}
   </style>
 </head>
 <body>
-  <div class="stars" aria-hidden="true"></div>
-  <div class="overlay" aria-hidden="true"></div>
+  <div class="stars"></div>
+  <div class="overlay"></div>
 
   <div class="wrap">
+
+    <!-- HEADER -->
     <header>
       <div class="brand">
-       <a href="index.html" class="logo">
-    <img src="astrologo.webp" alt="PPF Logo" style="height:40px; width:40px; object-fit:contain;">
-  </a>
+        <a href="index.html" class="logo">
+          <img src="astrologo.webp" alt="PPF Logo" style="height:40px; width:40px; object-fit:contain;">
+        </a>
         <div>
           <h1>PPF → Past • Present • Future</h1>
           <p class="lead">Modern cosmic astrology — Kundli, Palm Scan, Love Cosmic, Death Predictor</p>
         </div>
       </div>
+
       <div style="display:flex;gap:8px;align-items:center">
         <button class="btn" onclick="location.href='login.html'">Login</button>
         <button class="btn" onclick="location.href='register.html'">Register</button>
@@ -56,34 +72,135 @@
       </div>
     </header>
 
+
+    <!-- FEATURES -->
     <div class="card">
       <h2 style="margin-top:0">Features</h2>
       <table>
         <thead><tr><th>Feature</th><th>Description</th><th>Action</th></tr></thead>
         <tbody>
           <tr><td>Kundli</td><td>Generate basic kundli from Name, DOB & Time</td><td><button class="btn" onclick="location.href='kundli.html'">Open</button></td></tr>
-          <tr><td>Palm Scan</td><td>Camera-based palm reading (love/marriage/life estimates)</td><td><button class="btn" onclick="location.href='palm.html'">Scan</button></td></tr>
-          <tr><td>Love Cosmic</td><td>Compatibility % between two people + pie chart</td><td><button class="btn" onclick="location.href='cosmiclove.html'">Open</button></td></tr>
-          <tr><td>Death Age</td><td>Fun estimate using diet, smoking & alcohol</td><td><button class="btn" onclick="location.href='death.html'">Start</button></td></tr>
+          <tr><td>Palm Scan</td><td>Camera-based palm reading (love/marriage/life insights)</td><td><button class="btn" onclick="location.href='palm.html'">Scan</button></td></tr>
+          <tr><td>Love Cosmic</td><td>Compatibility % between two people + cosmic chart</td><td><button class="btn" onclick="location.href='cosmiclove.html'">Open</button></td></tr>
+          <tr><td>Death Age</td><td>Fun estimate using diet, habits & wellness data</td><td><button class="btn" onclick="location.href='death.html'">Start</button></td></tr>
         </tbody>
       </table>
-
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px;flex-wrap:wrap">
-        <div class="lucky">
-          <div style="display:flex;flex-direction:column;align-items:flex-start">
-            <div style="font-size:13px;color:rgba(255,255,255,0.9)">Today's Lucky Insights</div>
-            <div style="display:flex;gap:10px;margin-top:6px;align-items:center">
-              <div class="sw" id="lcSw" aria-hidden="true"></div>
-              <div><strong id="lcCol">—</strong> · <span id="lcNum">—</span> · <span id="lcTime">—</span></div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <button class="btn" onclick="location.href='cosmiclove.html#luckyTable'">Live Lucky Table</button>
-        </div>
-      </div>
     </div>
 
+
+
+    <!-- BLOG SECTION (added just above footer) -->
+    <section class="blogs" id="blogs">
+    <h2>Latest Blogs</h2>
+    <div class="blog-container">
+
+        <!-- 1 -->
+        <a href="blog1.html" class="blog-card">
+            <h3>What Your Zodiac Sign Says About Your Future Personality</h3>
+        </a>
+
+        <!-- 2 -->
+        <a href="blog2.html" class="blog-card">
+            <h3>Moon Sign Meaning: How It Controls Your Emotions</h3>
+        </a>
+
+        <!-- 3 -->
+        <a href="blog3.html" class="blog-card">
+            <h3>Top 5 Lucky Colors Based on Your Birth Date</h3>
+        </a>
+
+        <!-- 4 -->
+        <a href="blog4.html" class="blog-card">
+            <h3>Astrology Life Path Number Explained</h3>
+        </a>
+
+        <!-- 5 -->
+        <a href="blog5.html" class="blog-card">
+            <h3>How Your Name Affects Your Destiny (Numerology Guide)</h3>
+        </a>
+
+        <!-- 6 -->
+        <a href="blog6.html" class="blog-card">
+            <h3>What Your Birth Day Tells About Your Career</h3>
+        </a>
+
+        <!-- 7 -->
+        <a href="blog7.html" class="blog-card">
+            <h3>2025 Love Compatibility Guide for All Zodiac Signs</h3>
+        </a>
+
+        <!-- 8 -->
+        <a href="blog8.html" class="blog-card">
+            <h3>Signs the Universe Is Sending You a Message</h3>
+        </a>
+
+        <!-- 9 -->
+        <a href="blog9.html" class="blog-card">
+            <h3>Meaning of Having a Strong or Weak Saturn</h3>
+        </a>
+
+        <!-- 10 -->
+        <a href="blog10.html" class="blog-card">
+            <h3>Daily Energy & Aura: How Your Aura Changes Every Day</h3>
+        </a>
+
+        <!-- 11 -->
+        <a href="blog11.html" class="blog-card">
+            <h3>How to Improve Your Focus Using Cosmic Principles</h3>
+        </a>
+
+        <!-- 12 -->
+        <a href="blog12.html" class="blog-card">
+            <h3>Signs You Are an Empath (Spiritual Sensitivity Test)</h3>
+        </a>
+
+        <!-- 13 -->
+        <a href="blog13.html" class="blog-card">
+            <h3>How Dreams Predict Your Future (Psychological + Spiritual)</h3>
+        </a>
+
+        <!-- 14 -->
+        <a href="blog14.html" class="blog-card">
+            <h3>Lucky Habits That Attract Money</h3>
+        </a>
+
+        <!-- 15 -->
+        <a href="blog15.html" class="blog-card">
+            <h3>How to Manifest Your Goals With Your Birth Number</h3>
+        </a>
+
+        <!-- 16 -->
+        <a href="blog16.html" class="blog-card">
+            <h3>Why You Keep Seeing 111, 222, 444 – Angel Numbers Explained</h3>
+        </a>
+
+        <!-- 17 -->
+        <a href="blog17.html" class="blog-card">
+            <h3>Cosmic Love Rules: How to Maintain Strong Relationships</h3>
+        </a>
+
+        <!-- 18 -->
+        <a href="blog18.html" class="blog-card">
+            <h3>How Your Palm Lines Reveal Hidden Strengths</h3>
+        </a>
+
+        <!-- 19 -->
+        <a href="blog19.html" class="blog-card">
+            <h3>Mind Reset: 5 Spiritual Practices for Daily Peace</h3>
+        </a>
+
+        <!-- 20 -->
+        <a href="blog20.html" class="blog-card">
+            <h3>Law of Attraction for Students and Young People</h3>
+        </a>
+
+    </div>
+</section>
+
+
+
+
+    <!-- FOOTER -->
     <footer style="margin-top:30px; text-align:center; font-size:14px; color:rgba(255,255,255,0.75);">
       <div style="margin-bottom:8px;">© PPF • Client-side insights • Keep data private or enable sync later</div>
 
@@ -96,20 +213,5 @@
     </footer>
 
   </div>
-
-  <script>
-    (function(){
-      const seedDate = (() => {
-        const t = new Date();
-        return t.getFullYear()*10000 + (t.getMonth()+1)*100 + t.getDate();
-      })();
-      const colors = ['Cosmic Blue','Moonlight Silver','Crimson Aura','Golden Dawn','Purple Nebula','Green Emerald','Black Onyx','Galaxy Violet'];
-      const col = colors[seedDate % colors.length];
-      document.getElementById('lcSw').style.background = ['#1E90FF','#C0C0C0','#DC143C','#FFD700','#8A2BE2','#2ECC71','#0B0B0B','#6a0dad'][seedDate % colors.length];
-      document.getElementById('lcCol').innerText = col;
-      document.getElementById('lcNum').innerText = (seedDate % 9) + 1;
-      const h = (seedDate % 14) + 6; document.getElementById('lcTime').innerText = h + ':00 - ' + (h+2) + ':59';
-    })();
-  </script>
 </body>
 </html>
