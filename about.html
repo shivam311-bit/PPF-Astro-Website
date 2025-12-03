@@ -3,65 +3,92 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>About — PPF (Past, Present, Future)</title>
+  <title>About — PPF</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
   <style>
     *{box-sizing:border-box;font-family:'Poppins',sans-serif}
-    body{margin:0;background:linear-gradient(135deg,rgba(10,1,24,0.6),rgba(37,0,71,0.6)),url('astropage.png') center/cover no-repeat;color:#fff;min-height:100vh}
-    .nav{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;gap:12px;padding:12px 20px;background:rgba(0,0,0,0.35);backdrop-filter:blur(6px);z-index:1000}
+    body{
+      margin:0;
+      background:linear-gradient(135deg,rgba(0,0,0,0.6),rgba(30,0,55,0.6)),
+      url('aboutbg.jpg') center/cover no-repeat;   /* <-- UNIQUE BACKGROUND */
+      color:#fff;
+      min-height:100vh;
+    }
+    .nav{
+      position:fixed;top:0;left:0;right:0;
+      display:flex;align-items:center;gap:12px;
+      padding:12px 20px;
+      background:rgba(0,0,0,0.35);
+      backdrop-filter:blur(6px);
+      z-index:1000;
+    }
     .nav img{height:40px;width:40px;border-radius:50%}
-    .nav .brand{font-weight:700;color:#fff}
-    .container{max-width:980px;margin:100px auto;padding:22px;background:rgba(0,0,0,0.45);border-radius:14px}
-    h1{color:#a8f0ff}
-    p{line-height:1.6;color:rgba(255,255,255,0.9)}
-    .btn{padding:10px 14px;border-radius:8px;border:none;background:linear-gradient(90deg,#8b5cf6,#06b6d4);color:#fff;cursor:pointer}
+    .container{
+      max-width:900px;
+      margin:100px auto;
+      padding:22px;
+      background:rgba(0,0,0,0.45);
+      border-radius:14px;
+    }
+    h1{color:#9ee8ff;font-size:32px}
+    p{line-height:1.6;color:#e8e8e8}
+    h2{color:#a8f0ff;margin-top:25px}
   </style>
 </head>
+
 <body>
+
   <div class="nav">
     <a href="index.html"><img src="astrologo.webp" alt="PPF Logo"></a>
-    <div class="brand">PPF — Past • Present • Future</div>
-    <div style="margin-left:auto;display:flex;gap:8px">
-      <a href="index.html" class="btn">Home</a>
-      <a href="cosmiclove.html" class="btn">Tools</a>
-      <a href="contact.html" class="btn">Contact</a>
+    <div style="font-weight:700">PPF</div>
+    <div style="margin-left:auto">
+      <a href="index.html" style="color:#9be3ff;margin-right:15px">Home</a>
+      <a href="privacy.html" style="color:#9be3ff;margin-right:15px">Privacy</a>
+      <a href="contact.html" style="color:#9be3ff">Contact</a>
     </div>
   </div>
 
-  <main class="container" role="main">
+  <main class="container">
     <h1>About PPF</h1>
+
     <p>
-      <strong>PPF — Past, Present, Future</strong> is a modern cosmic astrology platform built to give quick,
-      entertaining and insightful astrological guidance. We combine classic astrology concepts (kundli, nakshatra, moon sign)
-      with fun interactive tools — palm scanning, love compatibility, daily lucky colour/number/time and lifestyle-based health
-      pointers. Everything runs client-side and is privacy-first unless you opt to sync.
+      PPF (Past | Present | Future) is an interactive astrology and prediction platform
+      designed to give users daily insights, lucky numbers, kundli analysis, and fun 
+      future predictions. The goal is to offer a clean, modern and user-friendly experience 
+      while keeping everything fast and secure.
     </p>
 
-    <h2 style="margin-top:18px">Our Mission</h2>
+    <h2>Who Made This?</h2>
     <p>
-      We aim to make astrology approachable and inclusive — no religious barriers, just helpful tools to explore personality,
-      relationships and daily luck. Our modern theme and simple UI let users share results easily and come back daily for fresh insights.
+      Hi! I'm <strong>Shivam</strong>, the creator of PPF.  
+      I am currently a B.Tech CSIT student at <strong>DGIs (Dronacharya Group of Institutions)</strong>
+      and I enjoy building modern apps, websites and games.
     </p>
 
-    <h2 style="margin-top:18px">What we provide</h2>
+    <p>
+      I created PPF as a personal project to combine design, programming, astrology, 
+      and user engagement. I believe technology should be simple, beautiful, and helpful.
+    </p>
+
+    <h2>My Skills & Interests</h2>
     <ul>
-      <li>Basic Kundli &amp; Moon sign (quick, approximate results)</li>
-      <li>Palm Scan (camera-based, fun estimates)</li>
-      <li>Love Cosmic — compatibility percentage with pie chart</li>
-      <li>Daily Lucky Table — color, number, and time that update every day</li>
-      <li>Local account support to save your history (login/register)</li>
+      <li>Frontend Web Development (HTML, CSS, JS)</li>
+      <li>Game Development — Flappy Bird style, dinosaur jump, Mario-type games</li>
+      <li>Android app development in early stages</li>
+      <li>Learning cloud tools like Netlify, Firebase</li>
+      <li>Love building unique, creative projects</li>
     </ul>
 
-    <h2 style="margin-top:18px">Transparency</h2>
+    <h2>Goal of PPF</h2>
     <p>
-      Our site provides approximate results for entertainment and light guidance. For exact Vedic charts, planetary positions,
-      and clinical advice, consult a qualified astrologer or relevant professional.
+      I want PPF to grow into a smart, AI-powered astrology tool with features like 
+      compatibility results, palm scanning, horoscope prediction and more.
     </p>
 
-    <p style="margin-top:18px">
-      <a href="privacy.html" style="color:#9be3ff">Read our Privacy Policy</a> •
-      <a href="terms.html" style="color:#9be3ff">Terms &amp; Conditions</a>
-    </p>
+    <p>Thank you for using PPF! 💙</p>
   </main>
+
 </body>
 </html>
