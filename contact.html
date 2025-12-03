@@ -1,4 +1,4 @@
- <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -17,6 +17,7 @@
   </style>
 </head>
 <body>
+
   <div class="nav">
     <a href="index.html"><img src="astrologo.webp" alt="PPF Logo"></a>
     <div style="font-weight:700">PPF</div>
@@ -27,31 +28,27 @@
     <h1>Contact Us</h1>
     <p class="small">Have a question, partnership idea, or need help? Fill the form — we'll reply by email.</p>
 
-    <label>Your Name</label>
-    <input id="name" placeholder="Your full name">
+    <!-- FULLY WORKING NETLIFY FORM -->
+    <form name="contact" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="contact">
 
-    <label>Your Email</label>
-    <input id="email" placeholder="you@example.com">
+      <label>Your Name</label>
+      <input type="text" name="name" placeholder="Your full name" required>
 
-    <label>Message</label>
-    <textarea id="message" rows="6" placeholder="Write your message here..."></textarea>
+      <label>Your Email</label>
+      <input type="email" name="email" placeholder="you@example.com" required>
 
-    <button class="btn" id="sendBtn">Send Message</button>
+      <label>Message</label>
+      <textarea name="message" rows="6" placeholder="Write your message here..." required></textarea>
 
-    <p class="small" style="margin-top:14px">If the form doesn't work, email us directly at <a href="mailto:stha85620@gmail.com" style="color:#9be3ff">stha85620@gmail.com</a></p>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+
+    <p class="small" style="margin-top:14px">
+      If the form doesn't work, email us directly at 
+      <a href="mailto:stha85620@gmail.com" style="color:#9be3ff">stha85620@gmail.com</a>
+    </p>
   </main>
 
-  <script>
-    document.getElementById('sendBtn').addEventListener('click', ()=>{
-      const n = document.getElementById('name').value.trim();
-      const e = document.getElementById('email').value.trim();
-      const m = document.getElementById('message').value.trim();
-      if(!n||!e||!m){ return alert('Please fill all fields'); }
-      // Client-only fallback: build mailto link
-      const subject = encodeURIComponent('PPF Contact Form: ' + n);
-      const body = encodeURIComponent('Name: '+n + '\\nEmail: '+e+'\\n\\n'+m);
-      window.location.href = 'mailto:stha85620@gmail.com?subject='+subject+'&body='+body;
-    });
-  </script>
 </body>
 </html>
