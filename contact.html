@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Contact — PPF</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
@@ -28,22 +29,28 @@
     <h1>Contact Us</h1>
     <p class="small">Have a question, partnership idea, or need help? Fill the form — we'll reply by email.</p>
 
-    <!-- FULLY WORKING NETLIFY FORM -->
+    <!-- NETLIFY FORM WITH DYNAMIC SUBJECT AND HONEYPOT -->
     <form name="contact" method="POST" data-netlify="true" action="/thankyou.html" netlify-honeypot="bot-field">
-  <input type="hidden" name="form-name" value="contact">
-  <input type="hidden" name="bot-field">
-  
-  <label>Your Name</label>
-  <input type="text" name="name" placeholder="Your full name" required>
-  
-  <label>Your Email</label>
-  <input type="email" name="email" placeholder="you@example.com" required>
-  
-  <label>Message</label>
-  <textarea name="message" rows="6" placeholder="Write your message here..." required></textarea>
-  
-  <button type="submit" class="btn">Send Message</button>
-</form>
+      <!-- Required hidden input for Netlify -->
+      <input type="hidden" name="form-name" value="contact">
+      <input type="hidden" name="subject" value="New lead from %{formName} (%{submissionId})">
+      
+      <!-- Honeypot -->
+      <p style="display:none">
+        <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+      </p>
+
+      <label>Your Name</label>
+      <input type="text" name="name" placeholder="Your full name" required>
+
+      <label>Your Email</label>
+      <input type="email" name="email" placeholder="you@example.com" required>
+
+      <label>Message</label>
+      <textarea name="message" rows="6" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit" class="btn">Send Message</button>
+    </form>
 
     <p class="small" style="margin-top:14px">
       If the form doesn't work, email us directly at 
@@ -53,4 +60,3 @@
 
 </body>
 </html>
-
