@@ -1,229 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Moon Sign Meaning: How It Controls Your Emotions</title>
+    <meta name="description" content="Discover how your Moon Sign shapes your emotions, love style, and inner needs. A clear, practical guide to each Moon Sign and how to use that knowledge for emotional balance." />
 
-    <!-- YOUR ADSENSE CODE -->
+    <!-- Adsense (keep if you're using ads) -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5381925480060973"
     crossorigin="anonymous"></script>
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f7f5ff;
-            margin: 0;
-            padding: 0;
-            line-height: 1.7;
+        :root{
+            --bg:#f4f6ff;
+            --card:#ffffff;
+            --accent:#5b4ee6;
+            --muted:#6b7280;
+            --text:#0f1724;
+            --radius:14px;
+            --max-width:1100px;
         }
-        header {
-            background: #6a5acd;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 26px;
-            font-weight: bold;
+        *{box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{
+            margin:0;
+            font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background:linear-gradient(180deg,var(--bg),#ffffff 60%);
+            color:var(--text);
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            line-height:1.65;
         }
-        .container {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+        header.site-header{
+            background:linear-gradient(90deg,var(--accent),#3f3bd9);
+            color:#fff;
+            padding:26px 20px;
+            text-align:center;
+            box-shadow:0 6px 18px rgba(91,78,230,0.14);
         }
-        h2 {
-            color: #333;
+        header .title{
+            font-weight:700;
+            font-size:20px;
+            letter-spacing:0.2px;
         }
-        p {
-            color: #555;
+        .hero{
+            max-width:var(--max-width);
+            margin:22px auto;
+            padding:20px;
+            background:var(--card);
+            border-radius:var(--radius);
+            box-shadow:0 6px 20px rgba(15,23,36,0.06);
+            display:flex;
+            gap:18px;
+            align-items:center;
         }
+        .hero .meta{
+            flex:1;
+        }
+        .hero h1{
+            margin:0 0 8px 0;
+            font-family:Merriweather, Georgia, serif;
+            font-size:26px;
+            color:var(--text);
+        }
+        .hero p.lead{
+            margin:0;
+            color:var(--muted);
+            font-size:15px;
+        }
+        .hero .meta-row{
+            margin-top:10px;
+            display:flex;
+            gap:12px;
+            align-items:center;
+            color:var(--muted);
+            font-size:13px;
+        }
+        .author{
+            display:flex;
+            gap:12px;
+            align-items:center;
+            background:linear-gradient(180deg,#fbfbff,#ffffff);
+            padding:10px 14px;
+            border-radius:10px;
+            box-shadow:0 4px 12px rgba(15,23,36,0.03);
+        }
+        .author img{
+            width:48px;
+            height:48px;
+            border-radius:50%;
+            object-fit:cover;
+        }
+        .author .name{font-weight:600;font-size:14px}
+        .container{
+            max-width:var(--max-width);
+            margin:20px auto 80px;
+            padding:0 20px;
+            display:grid;
+            gap:20px;
+            grid-template-columns: 1fr 320px;
+        }
+
+        /* Article */
+        article.card{
+            background:var(--card);
+            padding:28px;
+            border-radius:14px;
+            box-shadow:0 6px 20px rgba(15,23,36,0.05);
+            min-height:200px;
+        }
+        article.card h2{
+            margin-top:28px;
+            font-family:Merriweather, serif;
+            color:#111827;
+            font-size:20px;
+        }
+        article.card h3{
+            margin-top:18px;
+            font-size:17px;
+            color:#111827;
+        }
+        article.card p{
+            color:var(--muted);
+            margin:12px 0;
+            font-size:15px;
+        }
+        article.card ul{
+            margin:0 0 12px 20px;
+            color:var(--muted);
+        }
+        .lead-intro{
+            font-size:16px;
+            color:#334155;
+        }
+
+        /* Aside / TOC */
+        aside.sticky{
+            position:relative;
+        }
+        .toc{
+            position:sticky;
+            top:22px;
+            background:linear-gradient(180deg,#fff,#fbfdff);
+            padding:18px;
+            border-radius:12px;
+            box-shadow:0 6px 18px rgba(15,23,36,0.04);
+            font-size:14px;
+            color:#374151;
+        }
+        .toc h4{margin:0 0 8px 0;font-size:14px;color:#0f1724}
+        .toc ol{
+            margin:0;
+            padding-left:18px;
+            color:var(--muted);
+        }
+        .toc a{
+            color:var(--muted);
+            text-decoration:none;
+        }
+        .toc a.active{color:var(--accent);font-weight:600}
+
+        /* Progress bar */
+        #reading-progress{
+            position:fixed;
+            left:0;
+            top:0;
+            height:3px;
+            background:linear-gradient(90deg,var(--accent),#8b5cf6);
+            width:0%;
+            z-index:9999;
+            box-shadow:0 2px 6px rgba(91,78,230,0.18);
+        }
+
+        /* Responsive */
+        @media (max-width:980px){
+            .container{grid-template-columns:1fr; padding-bottom:40px}
+            .hero{flex-direction:column;align-items:flex-start}
+            .toc{position:relative; top:auto}
+        }
+        @media (max-width:420px){
+            .hero h1{font-size:20px}
+            header .title{font-size:18px}
+        }
+
+        /* small helpers */
+        .muted{color:var(--muted)}
+        .pill{display:inline-block;background:#f1f2ff;color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:600;font-size:13px}
+        .section-title{display:flex;justify-content:space-between;align-items:center;gap:12px}
+        .back-to-top{display:inline-block;margin-top:18px;font-size:13px;color:var(--muted);text-decoration:none}
     </style>
 </head>
-
 <body>
+    <div id="reading-progress" aria-hidden="true"></div>
 
-<header>Moon Sign Meaning: How It Controls Your Emotions</header>
+    <header class="site-header" role="banner">
+        <div class="title">Moon Sign Meaning — How It Controls Your Emotions</div>
+    </header>
 
-<div class="container">
+    <main>
+        <section class="hero" aria-labelledby="page-title">
+            <div class="meta">
+                <h1 id="page-title">Moon Sign Meaning: How It Controls Your Emotions</h1>
+                <p class="lead">Your Moon Sign reveals your emotional core — how you feel, how you love, and how you heal. Learn how each Moon sign shapes your inner life and relationships.</p>
+                <div class="meta-row">
+                    <span class="pill">Astrology</span>
+                    <span class="muted">•</span>
+                    <span class="muted">Dec 12, 2025 • ~7 min read</span>
+                </div>
+            </div>
 
-<p>
-Your Moon Sign is one of the most important elements of your birth chart, yet most people only focus on their Sun Sign. 
-While the Sun represents your outer personality and how the world sees you, the Moon represents something far deeper: 
-<strong>your emotions, inner needs, reactions, and subconscious patterns.</strong>
-</p>
+            <div class="author" aria-label="Author">
+                <!-- Replace src with your avatar if you have one -->
+                <img src="https://avatars.githubusercontent.com/u/3369400?v=4" alt="Author avatar">
+                <div>
+                    <div class="name">PPF Astro</div>
+                    <div class="muted" style="font-size:13px">Insightful astrology guides</div>
+                </div>
+            </div>
+        </section>
 
-<p>
-This means your Moon Sign controls how you feel, how you connect to others, how you love, and how you process pain or happiness. 
-Understanding your Moon Sign helps unlock emotional balance and develop healthier relationships with yourself and others.
-</p>
+        <div class="container" role="main">
+            <article class="card" aria-label="Article content">
+                <p class="lead-intro">
+                    Your Moon Sign is one of the most important elements of your birth chart, yet most people only focus on their Sun Sign.
+                    While the Sun represents your outer personality, the Moon represents your emotions, inner needs, reactions, and subconscious patterns.
+                </p>
 
-<h2>🌙 What Is a Moon Sign?</h2>
-<p>
-Your Moon Sign is determined by the position of the Moon at the time of your birth.  
-The Moon changes zodiac signs roughly every 2.5 days, which makes it very precise and personal.
-</p>
+                <h2 id="what-is-a-moon-sign">What Is a Moon Sign?</h2>
+                <p>The Moon sign is the zodiac sign the Moon was in when you were born. Because the Moon moves quickly through the zodiac (about every 2.5 days), it gives a precise snapshot of your emotional wiring.</p>
 
-<p>
-Where the Sun shows your overall personality, the Moon reveals:
-</p>
+                <h2 id="moon-role">How the Moon Controls Your Emotions</h2>
+                <p>The Moon governs emotional energy — mood, sensitivity, comfort-seeking, and instinctive reactions. Each Moon sign handles feelings differently and seeks comfort in unique ways.</p>
 
-<ul>
-    <li>Your deepest emotional needs</li>
-    <li>Your instinctive reactions</li>
-    <li>Your comfort zone</li>
-    <li>Your natural fears</li>
-    <li>Your childhood emotional patterns</li>
-    <li>Your hidden desires</li>
-    <li>Your love language</li>
-</ul>
+                <h2 id="moon-signs">Moon Signs — What They Mean</h2>
 
-<p>
-This is why two people with the same Sun Sign can behave completely differently — their Moon Signs are different.
-</p>
+                <h3 id="aries-moon">Aries Moon – The Fire-Hearted Soul</h3>
+                <p>Aries Moon people feel intensely and instantly. They react quickly and prefer honesty. Patience and calm communication help them find emotional stability.</p>
 
-<h2>🌙 How Moon Sign Controls Your Emotions</h2>
+                <h3 id="taurus-moon">Taurus Moon – The Emotional Rock</h3>
+                <p>Taurus Moon seeks comfort, stability, and routine. Predictability soothes them and loyalty becomes a cornerstone of their relationships.</p>
 
-<p>
-The Moon rules emotional energy.  
-It influences your mood swings, your sensitivity level, and how you handle stress.  
-Each Moon Sign expresses emotions differently and seeks comfort in unique ways.
-</p>
+                <h3 id="gemini-moon">Gemini Moon – The Thinker</h3>
+                <p>Gemini Moon processes feelings intellectually — talking and analyzing help them make sense of emotions. They are flexible but can be inconsistent.</p>
 
-<p>
-Below is a detailed explanation of how each Moon Sign shapes emotional behavior.
-</p>
+                <h3 id="cancer-moon">Cancer Moon – The Empath</h3>
+                <p>Cancer Moon is deeply intuitive and nurturing. They sense the emotional atmosphere and often care for others before themselves.</p>
 
-<h2>Aries Moon – The Fire-Hearted Soul</h2>
-<p>
-People with Aries Moon feel emotions intensely and instantly. They are quick to react, honest about their feelings, and hate emotional confusion.  
-Their emotional future becomes stable only when they learn patience, understanding, and healthy communication.  
-Aries Moon individuals grow stronger emotionally with age and become natural protectors of those they love.
-</p>
+                <h3 id="leo-moon">Leo Moon – The Heart of Gold</h3>
+                <p>Leo Moon wants appreciation and warmth. They express feelings vividly and become emotionally generous as they mature.</p>
 
-<h2>Taurus Moon – The Emotional Rock</h2>
-<p>
-Taurus Moon individuals crave peace, stability, and comfort. They dislike sudden emotional changes and prefer predictable environments.  
-As they mature, they become emotionally grounded, patient, and incredibly supportive.  
-Their future personality is calm, gentle, and deeply loyal.
-</p>
+                <h3 id="virgo-moon">Virgo Moon – The Emotional Analyzer</h3>
+                <p>Virgo Moon handles emotions practically. They reflect and improve themselves continuously, developing emotional clarity with time.</p>
 
-<h2>Gemini Moon – The Thinker</h2>
-<p>
-Gemini Moon processes emotions through logic. Instead of crying or reacting, they think, analyze, and talk it out.  
-They are emotionally flexible but sometimes inconsistent.  
-As they grow older, they develop emotional intelligence and become excellent communicators and advisors.
-</p>
+                <h3 id="libra-moon">Libra Moon – The Harmonizer</h3>
+                <p>Libra Moon seeks balance and peace in relationships. Learning to prioritize their needs helps them avoid people-pleasing.</p>
 
-<h2>Cancer Moon – The Empath</h2>
-<p>
-Cancer Moon is the most emotionally intuitive sign.  
-These individuals feel everything deeply — their emotions, the atmosphere, and even the feelings of others.  
-Over time, they become natural healers, emotionally strong, and compassionate leaders in relationships and family.
-</p>
+                <h3 id="scorpio-moon">Scorpio Moon – The Intensity Within</h3>
+                <p>Scorpio Moon feels everything deeply and privately. Their emotional life is transformative and often spiritually profound.</p>
 
-<h2>Leo Moon – The Heart of Gold</h2>
-<p>
-Leo Moon needs love, respect, and emotional validation.  
- They express feelings dramatically but sincerely.  
-As they mature, they become confident, expressive, and emotionally generous.  
-Their future personality grows into a warm, encouraging presence for others.
-</p>
+                <h3 id="sagittarius-moon">Sagittarius Moon – The Emotional Explorer</h3>
+                <p>Sagittarius Moon seeks freedom and meaning. They prefer growth and optimism and resist emotional confinement.</p>
 
-<h2>Virgo Moon – The Emotional Analyzer</h2>
-<p>
-Virgo Moon handles emotions practically. They rarely show feelings openly but experience them deeply.  
-Their emotional future brings wisdom, clarity, and self-improvement.  
-With age, Virgo Moon individuals learn to trust their emotions and develop emotional strength through understanding.
-</p>
+                <h3 id="capricorn-moon">Capricorn Moon – The Emotional Strategist</h3>
+                <p>Capricorn Moon looks emotionally disciplined and becomes dependable through life experience and responsibility.</p>
 
-<h2>Libra Moon – The Harmonizer</h2>
-<p>
-Libra Moon loves emotional balance, peace, and understanding. They avoid conflict and seek harmony in all relationships.  
-Their emotional future becomes stable when they learn to listen to their own needs instead of always pleasing others.  
-They grow into loving, kind, and emotionally balanced individuals.
-</p>
+                <h3 id="aquarius-moon">Aquarius Moon – The Emotional Thinker</h3>
+                <p>Aquarius Moon observes feelings from a distance. They value independence and supportive friendships over emotional merging.</p>
 
-<h2>Scorpio Moon – The Intensity Within</h2>
-<p>
-Scorpio Moon feels emotions like a deep ocean — powerful, mysterious, and transformative.  
-They rarely show their true emotions but experience them at maximum depth.  
-In the future, Scorpio Moon becomes emotionally resilient, wise, and spiritually awakened.
-</p>
+                <h3 id="pisces-moon">Pisces Moon – The Emotional Dreamer</h3>
+                <p>Pisces Moon is sensitive and empathetic. They absorb moods and often express emotions through creativity and compassion.</p>
 
-<h2>Sagittarius Moon – The Emotional Explorer</h2>
-<p>
-Sagittarius Moon seeks freedom, excitement, and optimism.  
-They dislike emotional pressure or limitations.  
-Their future personality becomes adventurous, philosophical, and emotionally independent.  
-As they mature, they learn emotional grounding without losing their fire.
-</p>
+                <h2 id="love">How Moon Sign Affects Love</h2>
+                <p>Your Moon sign strongly influences your love style — what you need to feel secure and how you show intimacy.</p>
+                <ul>
+                    <li>Aries Moon: passion</li>
+                    <li>Taurus Moon: stability</li>
+                    <li>Gemini Moon: communication</li>
+                    <li>Cancer Moon: emotional safety</li>
+                    <li>Leo Moon: admiration</li>
+                    <li>Virgo Moon: loyalty</li>
+                    <li>Libra Moon: harmony</li>
+                    <li>Scorpio Moon: trust</li>
+                    <li>Sagittarius Moon: freedom</li>
+                    <li>Capricorn Moon: commitment</li>
+                    <li>Aquarius Moon: independence</li>
+                    <li>Pisces Moon: emotional depth</li>
+                </ul>
 
-<h2>Capricorn Moon – The Emotional Strategist</h2>
-<p>
-Capricorn Moon appears emotionally controlled, but they feel deeply inside.  
-Their childhood often teaches them maturity early.  
-Over time, they develop emotional discipline, wisdom, and incredible strength.  
-Their future personality becomes emotionally stable, strong, and dependable.
-</p>
+                <h2 id="final-thoughts">Final Thoughts</h2>
+                <p>Your Moon Sign is the hidden emotional engine of your personality. Understanding it guides you to emotional balance, better relationships, and greater self-awareness.</p>
 
-<h2>Aquarius Moon – The Emotional Thinker</h2>
-<p>
-Aquarius Moon processes feelings intellectually. They don’t absorb emotions; they observe them.  
-Their future personality becomes innovative, free-spirited, and emotionally self-aware.  
-They excel at supporting others without becoming overwhelmed.
-</p>
+                <p class="muted"><strong>Tip:</strong> If you don't know your Moon Sign, use a birth chart calculator with your birth date, time, and place to find it precisely.</p>
 
-<h2>Pisces Moon – The Emotional Dreamer</h2>
-<p>
-Pisces Moon is deeply intuitive, sensitive, and imaginative.  
-They feel emotions at a spiritual level and often absorb the moods of others.  
-As they mature, they develop emotional wisdom, creativity, and healing abilities.  
-Their future personality becomes artistic, peaceful, and highly empathetic.
-</p>
+                <a href="#page-top" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</a>
+            </article>
 
-<h2>🌙 How Moon Sign Affects Love</h2>
-<p>
-Your Moon Sign determines your *love style*, including:
-</p>
+            <aside class="sticky" aria-label="Table of contents and quick links">
+                <nav class="toc" aria-labelledby="toc-heading">
+                    <h4 id="toc-heading">On this page</h4>
+                    <ol id="toc-list"></ol>
+                    <div style="margin-top:12px;font-size:13px;color:var(--muted)">
+                        <div>Share: <a href="#" aria-label="Share on Twitter">Twitter</a> • <a href="#" aria-label="Share on Facebook">Facebook</a></div>
+                    </div>
+                </nav>
+            </aside>
+        </div>
+    </main>
 
-<ul>
-    <li>How you express love</li>
-    <li>What makes you feel secure</li>
-    <li>Your emotional expectations</li>
-    <li>Your relationship habits</li>
-</ul>
+    <script>
+        // Build TOC from H2/H3 headings
+        (function(){
+            const content = document.querySelector('article.card');
+            const tocList = document.getElementById('toc-list');
+            if(!content || !tocList) return;
 
-<p>
-For example:
-</p>
+            const headings = content.querySelectorAll('h2, h3');
+            headings.forEach(h=>{
+                if(!h.id) {
+                    // create id from text
+                    h.id = h.textContent.trim().toLowerCase().replace(/[^\w]+/g,'-');
+                }
+                const li = document.createElement('li');
+                li.style.marginBottom = '8px';
+                const a = document.createElement('a');
+                a.href = '#'+h.id;
+                a.textContent = h.textContent;
+                a.addEventListener('click', ()=> {
+                    // small delay to allow scroll
+                    setTimeout(()=> updateActive(), 120);
+                });
+                li.appendChild(a);
+                tocList.appendChild(li);
+            });
 
-<p><strong>Aries Moon</strong>: needs passion  
-<strong>Taurus Moon</strong>: needs stability  
-<strong>Gemini Moon</strong>: needs communication  
-<strong>Cancer Moon</strong>: needs emotional safety  
-<strong>Leo Moon</strong>: needs admiration  
-<strong>Virgo Moon</strong>: needs loyalty  
-<strong>Libra Moon</strong>: needs harmony  
-<strong>Scorpio Moon</strong>: needs trust  
-<strong>Sagittarius Moon</strong>: needs freedom  
-<strong>Capricorn Moon</strong>: needs long-term commitment  
-<strong>Aquarius Moon</strong>: needs independence  
-<strong>Pisces Moon</strong>: needs emotional depth
-</p>
+            // Update active TOC link on scroll
+            const tocLinks = tocList.querySelectorAll('a');
+            function updateActive(){
+                let current=null;
+                headings.forEach(h=>{
+                    const rect = h.getBoundingClientRect();
+                    if(rect.top <= 120) current = h;
+                });
+                tocLinks.forEach(a=>{
+                    a.classList.remove('active');
+                    if(current && a.getAttribute('href') === '#'+current.id){
+                        a.classList.add('active');
+                    }
+                });
+            }
 
-<h2>🌙 Final Thoughts</h2>
-<p>
-Your Moon Sign is the hidden emotional engine of your personality.  
-Once you understand it, you understand yourself.  
-It uncovers your vulnerabilities, strengths, emotional patterns, and the path to your emotional future.
-</p>
+            // reading progress
+            const progress = document.getElementById('reading-progress');
+            function updateProgress(){
+                const total = document.body.scrollHeight - window.innerHeight;
+                const progressPct = total>0 ? (window.scrollY / total) * 100 : 0;
+                progress.style.width = Math.min(100, Math.max(0, progressPct)) + '%';
+            }
 
-<p><strong>
-Knowing your Moon Sign is the key to emotional peace, better relationships, and a stable life.
-</strong></p>
-
-</div>
+            window.addEventListener('scroll', ()=>{
+                updateActive();
+                updateProgress();
+            }, {passive:true});
+            // init
+            updateActive();
+            updateProgress();
+        })();
+    </script>
 </body>
 </html>
