@@ -1,145 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>How to Improve Your Focus Using Cosmic Principles</title>
-
+  <meta name="description" content="Practical daily habits, planetary insights, breathing techniques and color therapy to improve concentration using cosmic principles." />
   <!-- Google AdSense Code -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5381925480060973"
      crossorigin="anonymous"></script>
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+
   <style>
-    body{font-family:Arial,Helvetica,sans-serif;background:#f8f9ff;margin:0;padding:20px;line-height:1.9;color:#222}
-    .container{max-width:900px;margin:auto;background:#fff;padding:30px;border-radius:10px;
-      box-shadow:0 8px 22px rgba(0,0,0,.07)}
-    header{background:#2f3640;color:#fff;padding:20px;border-radius:8px;text-align:center;margin-bottom:22px}
-    h1{margin:0;font-size:24px}
-    h2{color:#2f3640;margin-top:26px}
-    p{margin-bottom:16px}
-    ul{margin-left:22px}
-    .box{background:#eef2ff;padding:15px;border-left:5px solid #2f3640;border-radius:6px;margin:20px 0}
-    footer{text-align:center;margin-top:30px;color:#666;font-size:14px}
+    :root{
+      --bg: #f6f8ff;
+      --card: #ffffff;
+      --muted: #64748b;
+      --text: #0f172a;
+      --accent: #2b3a67;
+      --accent-2: #6b8cff;
+      --soft: #eef3ff;
+      --radius: 12px;
+      --maxw: 900px;
+      --content-pad: 32px;
+    }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+      :root{
+        --bg: #0b1020;
+        --card: #071026;
+        --muted: #9aa7bf;
+        --text: #e6eef8;
+        --accent: #9bb4ff;
+        --soft: #07203d;
+      }
+    }
+
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.7;
+      padding:24px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--maxw);
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:0 10px 30px rgba(11, 15, 30, 0.08);
+      padding: clamp(20px, 3vw, var(--content-pad));
+      box-sizing:border-box;
+    }
+
+    a{color:var(--accent-2); text-decoration:none}
+    a:focus, a:hover{text-decoration:underline}
+
+    .skip-link{
+      position:absolute; left:8px; top:8px;
+      background:#fff; color:var(--accent); padding:6px 10px; border-radius:6px; transform:translateY(-120%);
+      transition:transform .18s ease;
+    }
+    .skip-link:focus{ transform:translateY(0); z-index:10; box-shadow:0 4px 18px rgba(2,6,23,.15) }
+
+    header.site-header{
+      text-align:center;
+      margin-bottom:18px;
+    }
+    .eyebrow{ font-size:13px; color:var(--muted); margin-bottom:6px }
+    h1{
+      margin:0;
+      font-family:"Merriweather", serif;
+      font-size:clamp(1.4rem, 2.6vw, 2rem);
+      color:var(--accent);
+      line-height:1.15;
+    }
+    .meta{
+      color:var(--muted); font-size:13px; margin-top:8px;
+    }
+
+    .layout{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:20px;
+    }
+
+    @media(min-width:900px){
+      .layout{ grid-template-columns: 1fr 280px; align-items:start; }
+    }
+
+    main article{
+      font-size:clamp(15px, 1.6vw, 16px);
+    }
+
+    .hero-lead{ margin:14px 0 18px; color:var(--muted) }
+
+    .toc{
+      background:var(--soft);
+      padding:12px;
+      border-radius:10px;
+      border-left:4px solid var(--accent);
+      font-size:14px;
+      margin-bottom:18px;
+    }
+    .toc ul{ margin:8px 0 0 14px; padding:0; }
+    .toc a{ color:var(--accent); }
+
+    .section{
+      margin-top:20px;
+    }
+
+    .callout{
+      background: linear-gradient(180deg, rgba(238,243,255,0.6), rgba(238,243,255,0.9));
+      border-left:5px solid var(--accent);
+      padding:14px 16px;
+      border-radius:8px;
+      margin:18px 0;
+      color:var(--text);
+    }
+
+    .cosmic-list{ margin-left:18px; padding-left:0; }
+    .cosmic-list li{ margin-bottom:8px; list-style: disc; }
+
+    .aside{
+      background: linear-gradient(180deg, rgba(242,246,255,0.9), transparent);
+      border-radius:10px;
+      padding:16px;
+      font-size:14px;
+      color:var(--muted);
+      position:relative;
+    }
+    .aside h3{ margin-top:0; color:var(--accent); font-size:15px; }
+    .aside .tip{ background:var(--card); padding:10px; border-radius:8px; margin-top:10px; box-shadow:0 6px 18px rgba(11,15,30,0.04) }
+
+    .ad-placeholder{ margin:18px 0; display:flex; justify-content:center; }
+
+    footer.site-footer{
+      text-align:center; color:var(--muted); font-size:13px; margin-top:26px;
+      border-top:1px dashed rgba(0,0,0,0.04); padding-top:18px;
+    }
+
+    small.muted{ color:var(--muted); font-size:13px; display:block; margin-top:6px }
   </style>
 </head>
 <body>
-<div class="container">
+  <a href="#main-content" class="skip-link">Skip to content</a>
 
-<header>
-  <h1>How to Improve Your Focus Using Cosmic Principles</h1>
-</header>
+  <div class="container" role="document" aria-labelledby="page-title">
+    <header class="site-header" role="banner">
+      <div class="eyebrow">Love Cosmic Astrology — Practical cosmic living</div>
+      <h1 id="page-title">How to Improve Your Focus Using Cosmic Principles</h1>
+      <div class="meta" aria-hidden="true">Focus, planetary influences & practical daily habits</div>
+    </header>
 
-<p>
-In today’s fast-moving digital world, lack of focus has become one of the biggest challenges for students, professionals,
-and creative minds. Cosmic principles—derived from astrology, numerology, and universal energy alignment—offer a powerful
-yet natural way to improve concentration, clarity, and mental discipline.
-</p>
+    <div class="layout">
+      <main id="main-content" tabindex="-1" role="main">
+        <article itemscope itemtype="http://schema.org/Article" aria-label="Article: How to Improve Your Focus Using Cosmic Principles">
+          <p class="hero-lead">
+            In a world full of digital distractions, aligning your daily habits with simple cosmic principles can make focus feel effortless.
+            This article breaks down approachable routines, planetary influences, breathing techniques and color therapy to help you sharpen attention and calm the mind.
+          </p>
 
-<h2>Understanding Focus from a Cosmic Perspective</h2>
-<p>
-Focus is not just a mental skill; it is an energetic state. According to cosmic science, your ability to concentrate
-depends on how aligned your mind, body, and universal energy are. When planetary energies are balanced, the mind naturally
-becomes calm, sharp, and attentive.
-</p>
+          <nav class="toc" aria-label="Table of contents">
+            <strong>On this page</strong>
+            <ul>
+              <li><a href="#cosmic-perspective">Understanding focus from a cosmic perspective</a></li>
+              <li><a href="#planetary-roles">Role of planets</a></li>
+              <li><a href="#daily-habits">Daily cosmic habits</a></li>
+              <li><a href="#moon-energy">Moon energy & mental stability</a></li>
+              <li><a href="#numerology">Numerology & focus</a></li>
+              <li><a href="#breathing">Breathing technique</a></li>
+              <li><a href="#color-therapy">Color therapy</a></li>
+            </ul>
+          </nav>
 
-<div class="box">
-<strong>Cosmic Rule:</strong> A focused mind is a result of balanced energy, not forced discipline.
-</div>
+          <section id="cosmic-perspective" class="section">
+            <h2>Understanding focus from a cosmic perspective</h2>
+            <p>
+              Focus is more than willpower — it's an energetic state. When your internal rhythms are aligned with planetary and environmental energies,
+              attention becomes steadier and stress decreases. Think of alignment as creating the conditions where concentration can naturally grow.
+            </p>
+            <div class="callout" role="note">
+              <strong>Cosmic rule:</strong> A focused mind is the result of balanced energy, not forced discipline.
+            </div>
+          </section>
 
-<h2>The Role of Planets in Focus & Concentration</h2>
-<p>
-Different planets influence different mental abilities:
-</p>
-<ul>
-  <li><strong>Mercury:</strong> Controls thinking, logic, learning, and communication.</li>
-  <li><strong>Moon:</strong> Governs emotions, memory, and mental stability.</li>
-  <li><strong>Saturn:</strong> Builds discipline, patience, and long-term focus.</li>
-  <li><strong>Sun:</strong> Enhances confidence and clarity of purpose.</li>
-</ul>
+          <section id="planetary-roles" class="section">
+            <h2>The role of planets in focus & concentration</h2>
+            <p>Different planets correspond to different mental strengths:</p>
+            <ul class="cosmic-list">
+              <li><strong>Mercury:</strong> Thinking, communication and learning speed.</li>
+              <li><strong>Moon:</strong> Emotions, memory and mental stability.</li>
+              <li><strong>Saturn:</strong> Discipline, routine and long-term focus.</li>
+              <li><strong>Sun:</strong> Confidence, clarity of purpose and motivation.</li>
+            </ul>
+            <p class="muted">Imbalances may show up as restlessness, distractibility or mental fatigue.</p>
+          </section>
 
-<p>
-When these planetary energies are disturbed, distraction, anxiety, and mental fatigue increase.
-</p>
+          <section id="daily-habits" class="section">
+            <h2>Daily cosmic habits to improve focus</h2>
+            <p>Small habits practiced consistently often have the largest effect:</p>
+            <ul class="cosmic-list">
+              <li>Wake before sunrise to sync with natural daylight rhythms.</li>
+              <li>Schedule focused work during morning Mercury hours when possible.</li>
+              <li>Reduce bright screen exposure after sunset to calm lunar influence.</li>
+              <li>Keep a consistent daily routine to strengthen Saturn energy.</li>
+            </ul>
+          </section>
 
-<h2>Daily Cosmic Habits to Improve Focus</h2>
-<p>
-Small daily practices aligned with cosmic timing can dramatically enhance your attention span:
-</p>
-<ul>
-  <li>Wake up before sunrise to sync with Earth’s natural energy.</li>
-  <li>Study or work during Mercury hours (morning time).</li>
-  <li>Reduce screen exposure after sunset to calm lunar energy.</li>
-  <li>Maintain a consistent daily routine to stabilize Saturn energy.</li>
-</ul>
+          <section id="moon-energy" class="section">
+            <h2>Moon energy & mental stability</h2>
+            <p>
+              The Moon strongly affects emotional balance and short-term memory. If you feel scattered during certain lunar phases,
+              use those times for reflective practices (light journaling, breathwork) rather than heavy cognitive tasks.
+            </p>
+            <div class="callout" role="note">
+              <strong>Tip:</strong> On full-moon nights consider lighter work and calming breathing practices rather than intensive studying.
+            </div>
+          </section>
 
-<h2>Moon Energy & Mental Stability</h2>
-<p>
-The Moon plays a critical role in mental focus. A disturbed Moon causes restlessness and emotional distraction.
-Practicing mindfulness during full moon or new moon days helps stabilize thoughts and improves memory retention.
-</p>
+          <section id="numerology" class="section">
+            <h2>Numerology & focus power</h2>
+            <p>Your birth number can indicate natural tendencies:</p>
+            <ul class="cosmic-list">
+              <li><strong>1:</strong> Strong focus; balance emotions to sustain it.</li>
+              <li><strong>3:</strong> Creative energy; structure helps avoid distraction.</li>
+              <li><strong>4:</strong> Steady and disciplined — thrives on routine.</li>
+              <li><strong>5:</strong> Versatile and curious — grounding practices enhance focus.</li>
+              <li><strong>7:</strong> Deep concentration when emotionally calm.</li>
+            </ul>
+          </section>
 
-<div class="box">
-<strong>Tip:</strong> On full moon nights, avoid heavy mental work and practice calm breathing instead.
-</div>
+          <section id="breathing" class="section">
+            <h2>Cosmic breathing technique for instant focus</h2>
+            <p>Try this quick, four-part breath to rebalance mind and emotions:</p>
+            <ul class="cosmic-list">
+              <li>Inhale gently for 4 seconds</li>
+              <li>Hold for 4 seconds</li>
+              <li>Exhale for 6 seconds</li>
+              <li>Repeat for 3–5 minutes</li>
+            </ul>
+            <p class="muted">Practicing this before starting focused work calms the mind and improves attention.</p>
+          </section>
 
-<h2>Numerology & Focus Power</h2>
-<p>
-Your birth number also influences how you focus:
-</p>
-<ul>
-  <li><strong>Number 1:</strong> Strong focus but needs emotional balance.</li>
-  <li><strong>Number 3:</strong> Creative focus with distractions.</li>
-  <li><strong>Number 4:</strong> Excellent discipline and structure.</li>
-  <li><strong>Number 5:</strong> Multi-tasker, needs grounding.</li>
-  <li><strong>Number 7:</strong> Deep focus when mentally calm.</li>
-</ul>
+          <section id="color-therapy" class="section">
+            <h2>Color therapy for concentration</h2>
+            <p>Color carries subtle vibrational effects you can use in your workspace:</p>
+            <ul class="cosmic-list">
+              <li><strong>Green:</strong> Supports learning and memory.</li>
+              <li><strong>Blue:</strong> Calms anxiety and encourages focus.</li>
+              <li><strong>Yellow:</strong> Boosts alertness and creative thinking.</li>
+            </ul>
+            <p>Use accents, not overwhelming color — small changes are often more effective.</p>
+          </section>
 
-<h2>Cosmic Breathing Technique for Instant Focus</h2>
-<p>
-This simple technique aligns your mind with universal rhythm:
-</p>
-<ul>
-  <li>Inhale for 4 seconds</li>
-  <li>Hold for 4 seconds</li>
-  <li>Exhale for 6 seconds</li>
-  <li>Repeat for 5 minutes</li>
-</ul>
+          <div class="ad-placeholder" aria-hidden="true">
+            <!-- Example Ad slot: keep the AdSense script, ensure account settings are correct -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-format="auto"
+                 data-ad-client="ca-pub-5381925480060973"
+                 data-ad-slot="1234567890"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
 
-<p>
-This balances Mercury and Moon energies, creating immediate mental clarity.
-</p>
+          <section class="section">
+            <h2>Why focus improves when you follow cosmic flow</h2>
+            <p>
+              Alignment reduces internal friction. When you stop fighting natural rhythms and instead design routines around them,
+              productivity and concentration become more sustainable. Think alignment over pressure.
+            </p>
+          </section>
 
-<h2>Color Therapy for Concentration</h2>
-<p>
-Colors carry vibrational frequencies:
-</p>
-<ul>
-  <li><strong>Green:</strong> Improves learning and memory</li>
-  <li><strong>Blue:</strong> Calms the mind and reduces anxiety</li>
-  <li><strong>Yellow:</strong> Enhances alertness and creativity</li>
-</ul>
+          <section class="section">
+            <h2>Final thoughts</h2>
+            <p>
+              Improving focus is a practice of energetic balance. Combine simple daily rituals, breathwork, and environmental tweaks
+              with awareness of planetary and personal tendencies to create lasting clarity. Consistency is the key.
+            </p>
+          </section>
 
-<p>
-Using these colors in your workspace or clothing can subtly improve focus.
-</p>
+          <footer class="site-footer" role="contentinfo">
+            <p>&copy; 2025 Love Cosmic Astrology</p>
+            <small class="muted">Content is for general guidance and self-improvement; not a substitute for professional advice.</small>
+          </footer>
+        </article>
+      </main>
 
-<h2>Why Focus Improves When You Follow Cosmic Flow</h2>
-<p>
-When you stop fighting time and energy and start working with them, productivity increases naturally.
-Cosmic principles teach alignment, not pressure. Once aligned, your focus becomes effortless and long-lasting.
-</p>
-
-<h2>Final Thoughts</h2>
-<p>
-Improving focus is not about forcing your brain—it is about balancing your energy. By following cosmic principles,
-understanding planetary influences, and adopting aligned habits, you can unlock deep concentration and mental clarity.
-Consistency is the key; the universe rewards discipline aligned with purpose.
-</p>
-
-<footer>
-  <p>&copy; 2025 Love Cosmic Astrology</p>
-</footer>
-
-</div>
+      <aside class="aside" role="complementary" aria-label="Quick tips">
+        <h3>Quick tips</h3>
+        <div class="tip">
+          <strong>Start small:</strong> 10–20 minutes of focused work + 5 minutes of cosmic breathing daily builds momentum.
+        </div>
+        <div class="tip" style="margin-top:10px;">
+          <strong>Workspace:</strong> Add a small green plant or a blue desk accessory to subtly shift the energy.
+        </div>
+        <div style="margin-top:12px; font-size:13px; color:var(--muted)">
+          <strong>Want more?</strong> Consider adding a short nightly review to strengthen Saturn's routine benefits.
+        </div>
+      </aside>
+    </div>
+  </div>
 </body>
 </html>
