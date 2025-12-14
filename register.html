@@ -40,21 +40,96 @@
   </div>
 
 <script>
-function getUsers(){ try{return JSON.parse(localStorage.getItem('ppf_users')||'[]')}catch(e){return[]} }
-function saveUsers(u){ localStorage.setItem('ppf_users', JSON.stringify(u)); }
-document.getElementById('regBtn').addEventListener('click', ()=>{
+function getUsers(){
+  try{
+    return JSON.parse(localStorage.getItem('ppf_users') || '[]')
+  }catch(e){
+    return []
+  }
+}
+
+function saveUsers(users){
+  localStorage.setItem('ppf_users', JSON.stringify(users));
+}
+
+function isValidEmail(email){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+}
+
+document.getElementById('regBtn').addEventListener('click', () => {
   const username = document.getElementById('username').value.trim();
   const email = document.getElementById('email').value.trim();
   const pw = document.getElementById('pw').value;
   const pw2 = document.getElementById('pw2').value;
-  if(!username||!email||!pw){ document.getElementById('msg').innerText='Fill all fields'; return; }
-  if(pw!==pw2){ document.getElementById('msg').innerText='Passwords do not match'; return; }
-  const users = getUsers(); if(users.find(x=>x.username===username || x.email===email)){ document.getElementById('msg').innerText='User exists'; return; }
-  users.push({username,email,password:pw,history:[]}); saveUsers(users);
-  document.getElementById('msg').innerText='Account created — redirecting to login...'; setTimeout(()=>location.href='login.html',900);
+  const msg = document.getElementById('msg');
+
+  msg.style.color = '#ffb3b3';
+
+  // Empty check
+  if(!username || !email || !pw || !pw2){
+    msg.innerText = '⚠️ All fields are required';
+    return;
+  }
+
+  // Username length
+  if(username.length < 3){
+    msg.innerText = '⚠️ Username must be at least 3 characters';
+    return;
+  }
+
+  // Email format check
+  if(!isValidEmail(email)){
+    msg.innerText = '⚠️ Enter a valid email address';
+    return;
+  }
+
+  // Password length
+  if(pw.length < 6){
+    msg.innerText = '⚠️ Password must be at least 6 characters';
+    return;
+  }
+
+  // Password match
+  if(pw !== pw2){
+    msg.innerText = '⚠️ Passwords do not match';
+    return;
+  }
+
+  const users = getUsers();
+
+  // Duplicate check
+  if(users.find(u => u.username === username)){
+    msg.innerText = '⚠️ Username already taken';
+    return;
+  }
+
+  if(users.find(u => u.email === email)){
+    msg.innerText = '⚠️ Email already registered';
+    return;
+  }
+
+  // Save user
+  users.push({
+    username,
+    email,
+    password: pw,
+    createdAt: new Date().toISOString(),
+    history: []
+  });
+
+  saveUsers(users);
+
+  msg.style.color = '#b3ffb3';
+  msg.innerText = '✅ Account created successfully! Redirecting...';
+
+  setTimeout(() => {
+    location.href = 'login.html';
+  }, 1200);
 });
 </script>
+
 </body>
 </html>
+
 
 
