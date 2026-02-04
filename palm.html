@@ -3,6 +3,21 @@
 <head>
   <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Palm Scan — PPF</title>
+  <meta name="author" content="PPF Team">
+  <meta name="description" content="Camera-based palm scan demo that provides playful, illustrative life and relationship estimates. Designed for entertainment and education with privacy-first local processing." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Palm Scan — PPF",
+    "description": "A camera-based palm scan demo providing fun estimates and educational insights; runs locally in the browser for privacy.",
+    "author": {"@type":"Person","name":"PPF Team"},
+    "publisher": {"@type":"Organization","name":"PPF","logo":{"@type":"ImageObject","url":"astrologo.webp"}},
+    "mainEntityOfPage": {"@type":"WebPage","@id":"palm.html"}
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5381925480060973"
+     crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     *{box-sizing:border-box;font-family:'Poppins',sans-serif}
@@ -27,6 +42,9 @@
 
     <div class="card">
       <h2>Palm Scan (Camera)</h2>
+      <div style="font-size:14px;color:rgba(255,255,255,0.85);margin-bottom:12px">
+        By <strong>PPF Team</strong> — A privacy-first demo that uses simple image sampling to produce playful, illustrative estimates. This is an entertainment tool and not a professional palmistry service.
+      </div>
       <div class="row">
         <div class="col">
           <video id="video" autoplay playsinline></video>
@@ -42,6 +60,27 @@
         </div>
       </div>
     </div>
+  
+  <div class="wrap" style="max-width:1000px;margin:18px auto;padding:0">
+    <div style="background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;color:rgba(255,255,255,0.92);line-height:1.6">
+      <h3 style="color:#aee2ff;margin-top:0">Methodology & Accuracy</h3>
+      <p>
+        This Palm Scan page offers a lightweight, privacy-focused demonstration rather than a full palmistry service. When you capture an image, the script samples pixel data to create a deterministic numeric seed used to map playful estimates (love age, marriage age, estimated life). The approach is intentionally simple: it converts a handful of image sample values into reproducible numbers so users can explore the concept without uploading images to servers.
+      </p>
+      <p>
+        Accuracy and limitations: Traditional palmistry analyzes the palm's lines, mounts, and proportions by an experienced reader; professional readings often also consider the individual's context, photograph quality, and many subtle markers. This demo does not attempt to perform true line detection, ridge mapping, or medical analysis. Results are illustrative and meant for entertainment and self-reflection only.
+      </p>
+      <p>
+        Privacy note: all processing happens locally in your browser — no image data is transmitted off your device. If you are logged in and choose to save results, only the numeric outcomes (not the image) are stored in your browser's localStorage. This design preserves privacy while allowing a simple history feature.
+      </p>
+      <p>
+        How to use the page responsibly: treat outputs as prompts for introspection rather than concrete predictions. For health, legal, or serious life decisions, consult certified professionals. If you prefer a deeper palmistry reading, seek an experienced practitioner who can analyze high-resolution palm images or perform an in-person reading.
+      </p>
+      <p>
+        Technical note for developers: this demo uses getUserMedia for camera access and the Canvas API to read pixel data. Results depend heavily on lighting, camera angle, and image composition; consistent lighting and a flat palm give the most reproducible outcomes.
+      </p>
+    </div>
+  </div>
   </div>
 
 <script>
