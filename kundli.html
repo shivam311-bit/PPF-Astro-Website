@@ -8,6 +8,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Kundli Generator - PPF</title>
+  <meta name="author" content="PPF Team">
+  <meta name="description" content="Generate a personalized kundli (birth chart) and Mulank numerology report using your name, date and time of birth. Practical explanations and guidance provided." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Kundli Generator",
+    "description": "Generate a personalized kundli (birth chart) and Mulank numerology report using your name, date and time of birth.",
+    "author": {"@type":"Person","name":"PPF Team"},
+    "publisher": {"@type":"Organization","name":"PPF","logo":{"@type":"ImageObject","url":"astrologo.webp"}},
+    "mainEntityOfPage": {"@type":"WebPage","@id":"index.html"}
+  }
+  </script>
 
 <style>
   body {
@@ -89,6 +102,29 @@
   <div class="container">
     <h1>Generate Kundli</h1>
 
+    <div style="font-size:14px;color:rgba(255,255,255,0.85);margin-bottom:12px">
+      By <strong>PPF Team</strong> — Experienced astrologers providing clear, practical readings. Short bio: We create user-friendly, educational kundli reports; our tools are for guidance and entertainment, not a substitute for professional advice.
+    </div>
+
+    <section id="methodology" style="margin-top:14px;background:rgba(255,255,255,0.02);padding:14px;border-radius:10px;line-height:1.6;color:rgba(255,255,255,0.9)">
+      <h3 style="color:#aee2ff;margin-top:0">Methodology & Accuracy</h3>
+      <p>
+        This kundli tool combines simple astronomical approximations and classical numerology to produce an accessible, educational birth report. Sun sign (Zodiac) is determined from the calendar day and month using standard tropical boundaries. The Moon sign and Nakshatra (birth star) are approximated by estimating the Moon's mean motion from an epoch date to the provided birth date; this provides a useful, general Rashi/Nakshatra for learning and quick readings but is not a substitute for a full ephemeris-based chart.
+      </p>
+      <p>
+        Mulank (birth number) and name-number calculations use traditional numerology rules: Mulank is derived from the day of birth (with double-digit reduction rules applied as shown on the page), and name numbers map letters to digits using a simple Pythagorean mapping. These methods highlight personality tendencies and suggest practical areas of focus, but they deliberately avoid claiming deterministic fate.
+      </p>
+      <p>
+        Important accuracy notes: precise astrological charts require the exact geographic coordinates (longitude & latitude) and accurate time-zone/ daylight-saving offsets to compute house placements and planet positions to arc-second accuracy. This lightweight generator does not perform full planetary ephemeris calculations or house system placements — features commonly found in professional astrology software. As such, expect the results to be indicative and educational rather than precise for technical chart work.
+      </p>
+      <p>
+        How to use the results: treat this report as a clear starting point for self-reflection and learning. The Mulank, Name Number, Sun and Moon sign descriptions describe tendencies and influences, not certainties. If you need an exact birth-chart reading (for medical, legal, financial, or major life decisions), consult a professional astrologer who can compute a full natal chart from precise coordinates and an authoritative ephemeris.
+      </p>
+      <p>
+        Privacy & data: no data leaves your browser — all calculations run locally and temporary results are stored only if you use the site's local-history features. We provide this tool for guidance and entertainment and do not offer professional or certified advice.
+      </p>
+    </section>
+
     <label>Full Name</label>
     <input type="text" id="name" placeholder="Enter your name" />
 
@@ -147,6 +183,29 @@
       <h3>Moon Sign</h3>
       <div id="moonSign"></div>
 
+      <br>
+
+      <h3>Mulank (Numerology)</h3>
+      <div id="mulankInfo"></div>
+
+      <br>
+
+      <h3>Planet Characteristics by Zodiac Sign</h3>
+      <table style="width:100%; border-collapse:collapse; font-size:16px;">
+        <tr><td><b>Aries</b></td><td>Ruled by Mars - Leadership, courage, passion</td></tr>
+        <tr><td><b>Taurus</b></td><td>Ruled by Venus - Stability, wealth, sensuality</td></tr>
+        <tr><td><b>Gemini</b></td><td>Ruled by Mercury - Communication, intellect, versatility</td></tr>
+        <tr><td><b>Cancer</b></td><td>Ruled by Moon - Emotions, home, nurturing</td></tr>
+        <tr><td><b>Leo</b></td><td>Ruled by Sun - Confidence, creativity, leadership</td></tr>
+        <tr><td><b>Virgo</b></td><td>Ruled by Mercury - Analytical, service-oriented, practical</td></tr>
+        <tr><td><b>Libra</b></td><td>Ruled by Venus - Balance, harmony, partnership</td></tr>
+        <tr><td><b>Scorpio</b></td><td>Ruled by Mars - Intensity, transformation, depth</td></tr>
+        <tr><td><b>Sagittarius</b></td><td>Ruled by Jupiter - Expansion, philosophy, adventure</td></tr>
+        <tr><td><b>Capricorn</b></td><td>Ruled by Saturn - Discipline, responsibility, ambition</td></tr>
+        <tr><td><b>Aquarius</b></td><td>Ruled by Saturn - Innovation, idealism, humanitarian</td></tr>
+        <tr><td><b>Pisces</b></td><td>Ruled by Jupiter - Spirituality, intuition, compassion</td></tr>
+      </table>
+
     </div>
   </div>
 
@@ -171,20 +230,47 @@ function generateKundli() {
   document.getElementById("result").style.display = "block";
   document.getElementById("fullChart").style.display = "block";
 
+  const mulank = calculateMulank(dob);
+  const mulankDetails = getMulankDetails(mulank);
+  const nameNumber = calculateNameNumber(name);
+  const destinyNumber = calculateDestinyNumber(dob);
+
   document.getElementById("result").innerHTML = `
-    <b>Name:</b> ${name}<br>
+    <b>Name:</b> ${name} (Name Number: ${nameNumber})<br>
     <b>Date of Birth:</b> ${dob}<br>
     <b>Time of Birth:</b> ${tob}<br><br>
-    <b>Zodiac Sign:</b> ${zodiac}<br>
+    <b>Zodiac Sign (Sun Sign):</b> ${zodiac}<br>
+    <b>Mulank (Birth Number):</b> ${mulank}<br>
+    <b>Mulank Details:</b> ${mulankDetails.name}<br>
+    <b>Personality:</b> ${mulankDetails.personality}<br>
+    <b>Strengths:</b> ${mulankDetails.strengths}<br>
+    <b>Weaknesses:</b> ${mulankDetails.weaknesses}<br>
+    <b>Career:</b> ${mulankDetails.career}<br>
+    <b>Relationships:</b> ${mulankDetails.relationships}<br>
+    <b>Lucky Factors:</b> ${mulankDetails.lucky}<br>
+    <b>Compatibility:</b> ${mulankDetails.compatibility}<br>
+    <b>Destiny Number:</b> ${destinyNumber}<br>
   `;
 
   document.getElementById("nakshatraResult").innerHTML = `
-    <b>Nakshatra:</b> ${nakshatra.nakshatra}<br>
-    <b>Pada:</b> ${nakshatra.pada}
+    <b>Nakshatra (Birth Star):</b> ${nakshatra.nakshatra}<br>
+    <b>Pada (Quarter):</b> ${nakshatra.pada}
   `;
 
   document.getElementById("moonSign").innerHTML = `
     <b>Moon Sign (Rashi):</b> ${moonSignCalc}
+  `;
+
+  document.getElementById("mulankInfo").innerHTML = `
+    <b>Birth Number (Mulank):</b> ${mulank}<br>
+    <b>Planetary Ruler:</b> ${mulankDetails.name}<br>
+    <b>Personality:</b> ${mulankDetails.personality}<br>
+    <b>Strengths:</b> ${mulankDetails.strengths}<br>
+    <b>Weaknesses:</b> ${mulankDetails.weaknesses}<br>
+    <b>Career:</b> ${mulankDetails.career}<br>
+    <b>Relationships:</b> ${mulankDetails.relationships}<br>
+    <b>Lucky Factors:</b> ${mulankDetails.lucky}<br>
+    <b>Compatibility:</b> ${mulankDetails.compatibility}
   `;
 }
 
@@ -233,6 +319,181 @@ function getNakshatra(date) {
     nakshatra: nakshatras[nakshatraIndex],
     pada: pada
   };
+}
+
+/* ----------------------------
+   MULANK CALCULATION
+-----------------------------*/
+function calculateMulank(date) {
+  const dob = new Date(date);
+  const day = dob.getDate();
+  
+  let mulank = day;
+  
+  // For double digits, add them together (range 1-11)
+  if (mulank >= 10) {
+    mulank = Math.floor(mulank / 10) + (mulank % 10);
+  }
+  
+  return mulank;
+}
+
+function getMulankDetails(mulank) {
+  const details = {
+    1: {
+      name: "Surya (Sun)",
+      personality: "Energetic, self-driven, courageous, and honest with a commanding 'kingly' aura.",
+      strengths: "Excellent leadership skills, creativity, quick decision-making, strong willpower.",
+      weaknesses: "Can be arrogant, aggressive, bossy, and self-centered; may struggle to delegate.",
+      career: "CEOs, entrepreneurs, politicians, administrators, or influencers.",
+      relationships: "Loyal and protective but may struggle with work-life balance.",
+      lucky: "Yellow, gold, orange, red; strongest numbers 1, 5, 6.",
+      compatibility: "Compatible with 1, 5, 6, 9; be cautious with 4 and 8."
+    },
+    2: {
+      name: "Chandra (Moon)",
+      personality: "Sensitive, caring, diplomatic and intuitive; seeks harmony.",
+      strengths: "Empathy, supportiveness, strong intuition, good at teamwork.",
+      weaknesses: "Can be indecisive, overly dependent, or moody.",
+      career: "Counselor, mediator, artist, caregiver, hospitality roles.",
+      relationships: "Nurturing and affectionate; prioritizes emotional security.",
+      lucky: "Silver, white, light blue; favorable numbers 2, 7.",
+      compatibility: "Compatible with 2, 4, 8; harmonious with 6."
+    },
+    3: {
+      name: "Guru (Jupiter)",
+      personality: "Optimistic, sociable, expressive and creative.",
+      strengths: "Good communication, optimism, teaching ability, expansive thinking.",
+      weaknesses: "Can be scattered, overconfident or tactless at times.",
+      career: "Teacher, writer, media, law, philosophy, travel industry.",
+      relationships: "Warm, generous, enjoys playful companionship and growth.",
+      lucky: "Light yellow, orange; favorable numbers 3, 9.",
+      compatibility: "Compatible with 3, 5, 9."
+    },
+    4: {
+      name: "Practical (4)",
+      personality: "Stable, methodical, hardworking and detail-oriented.",
+      strengths: "Disciplined, reliable, excellent at planning and execution.",
+      weaknesses: "Can be rigid, stubborn, and resistant to change.",
+      career: "Engineer, accountant, administrator, project manager.",
+      relationships: "Steady and dependable partner; values security.",
+      lucky: "Brown, green, navy; favorable numbers 4, 8.",
+      compatibility: "Compatible with 4 and 8; may clash with overly impulsive numbers."
+    },
+    5: {
+      name: "Budh (Mercury)",
+      personality: "Adaptable, curious, communicative and adventurous.",
+      strengths: "Versatility, quick learning, sociability, keen intellect.",
+      weaknesses: "Restlessness, impatience, and inconsistency at times.",
+      career: "Sales, journalism, travel, communications, marketing.",
+      relationships: "Exciting and playful; needs freedom within partnership.",
+      lucky: "Green, turquoise; favorable numbers 5, 1.",
+      compatibility: "Compatible with 1, 3, 5."
+    },
+    6: {
+      name: "Shukra (Venus)",
+      personality: "Charming, artistic, harmonious and relationship-oriented.",
+      strengths: "Diplomacy, aesthetic sense, ability to create comfort and beauty.",
+      weaknesses: "Can be indulgent, possessive, or avoid conflict.",
+      career: "Design, arts, hospitality, beauty, diplomacy.",
+      relationships: "Romantic, caring and partnership-focused; values balance.",
+      lucky: "Pink, cream, pastels; favorable numbers 6, 2.",
+      compatibility: "Compatible with 2, 6, 9."
+    },
+    7: {
+      name: "Ketu / Introspective (7)",
+      personality: "Analytical, spiritual, introspective and seeker of truth.",
+      strengths: "Deep thinking, research ability, intuition and independence.",
+      weaknesses: "Can appear aloof, overly skeptical or socially withdrawn.",
+      career: "Researcher, scientist, spiritual teacher, analyst.",
+      relationships: "Prefers meaningful, often solitary relationships; values depth.",
+      lucky: "Purple, grey; favorable numbers 7, 11.",
+      compatibility: "Compatible with 7 and 11; best with partners who respect solitude."
+    },
+    8: {
+      name: "Shani (Saturn)",
+      personality: "Ambitious, authoritative, disciplined and resilient.",
+      strengths: "Perseverance, organizational skill, strategic thinking.",
+      weaknesses: "Can be pessimistic, stern, or overly demanding.",
+      career: "Law, finance, management, government service.",
+      relationships: "Committed and loyal but may be reserved emotionally.",
+      lucky: "Black, dark blue; favorable numbers 4, 8.",
+      compatibility: "Compatible with 4 and 8; approach relationships with long-term goals."
+    },
+    9: {
+      name: "Mangal (Mars)",
+      personality: "Generous, idealistic, dynamic and leadership-oriented.",
+      strengths: "Courage, passion, strong sense of mission and creativity.",
+      weaknesses: "Can be impulsive, impatient, or tactless.",
+      career: "Philanthropy, education, arts, activism, military/service.",
+      relationships: "Warm, giving, and inspiring; values shared ideals.",
+      lucky: "Red, maroon; favorable numbers 3, 9.",
+      compatibility: "Compatible with 1, 3, 9."
+    },
+    10: {
+      name: "Completion (10)",
+      personality: "Practical leader who completes tasks; ambitious and self-reliant.",
+      strengths: "Ability to initiate and finish projects, strong independence.",
+      weaknesses: "May be work-focused and blunt in communication.",
+      career: "Entrepreneur, manager, project leader, independent professional.",
+      relationships: "Supportive partner who expects mutual respect and results.",
+      lucky: "Gold, deep yellow; favorable numbers 1, 10.",
+      compatibility: "Compatible with practical and driven numbers like 1 and 4."
+    },
+    11: {
+      name: "Master Number Intuition (11)",
+      personality: "Highly intuitive, visionary, sensitive and charismatic.",
+      strengths: "Inspiration, leadership in visionary fields, spiritual insight.",
+      weaknesses: "Nervous sensitivity, emotional intensity, and overthinking.",
+      career: "Artist, spiritual leader, mediator, counselor, innovator.",
+      relationships: "Deeply connected, seeks soulful partnerships and understanding.",
+      lucky: "Silver, white; favorable numbers 11, 2.",
+      compatibility: "Compatible with 11, 2, 7; thrives with emotionally intelligent partners."
+    }
+  };
+  
+  return details[mulank] || { name: "Unknown", personality: "Cosmic influence", strengths: "—", weaknesses: "—", career: "—", relationships: "—", lucky: "—", compatibility: "—" };
+}
+
+/* ----------------------------
+   NAME NUMBER CALCULATION
+-----------------------------*/
+function calculateNameNumber(name) {
+  const nameMap = {
+    'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9,
+    'J': 1, 'K': 2, 'L': 3, 'M': 4, 'N': 5, 'O': 6, 'P': 7, 'Q': 8, 'R': 9,
+    'S': 1, 'T': 2, 'U': 3, 'V': 4, 'W': 5, 'X': 6, 'Y': 7, 'Z': 8
+  };
+  
+  let sum = 0;
+  for (let char of name.toUpperCase()) {
+    if (nameMap[char]) sum += nameMap[char];
+  }
+  
+  while (sum >= 10) {
+    sum = Math.floor(sum / 10) + (sum % 10);
+  }
+  
+  return sum;
+}
+
+/* ----------------------------
+   DESTINY NUMBER CALCULATION
+-----------------------------*/
+function calculateDestinyNumber(date) {
+  const dob = new Date(date);
+  const day = dob.getDate();
+  const month = dob.getMonth() + 1;
+  const year = dob.getFullYear();
+  
+  const sum = day + month + year;
+  let destiny = sum;
+  
+  while (destiny >= 10) {
+    destiny = Math.floor(destiny / 10) + (destiny % 10);
+  }
+  
+  return destiny;
 }
 
 /* ----------------------------
@@ -359,6 +620,5 @@ alert("Incorrect username or password!");
 
 </body>
 </html>
-
 
 
