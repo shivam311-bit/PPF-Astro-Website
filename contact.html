@@ -1,12 +1,11 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Contact — PPF</title>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5381925480060973"
      crossorigin="anonymous"></script>
-  
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Contact — PPF</title>
+    <meta name="robots" content="noindex" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     *{box-sizing:border-box;font-family:'Poppins',sans-serif}
@@ -21,7 +20,6 @@
   </style>
 </head>
 <body>
-
   <div class="nav">
     <a href="index.html"><img src="astrologo.webp" alt="PPF Logo"></a>
     <div style="font-weight:700">PPF</div>
@@ -32,37 +30,47 @@
     <h1>Contact Us</h1>
     <p class="small">Have a question, partnership idea, or need help? Fill the form — we'll reply by email.</p>
 
-    <!-- NETLIFY FORM WITH DYNAMIC SUBJECT AND HONEYPOT -->
-    <form name="contact" method="POST" data-netlify="true" action="/thankyou.html" netlify-honeypot="bot-field">
-      <!-- Required hidden input for Netlify -->
-      <input type="hidden" name="form-name" value="contact">
-      <input type="hidden" name="subject" value="New lead from %{formName} (%{submissionId})">
-      
-      <!-- Honeypot -->
-      <p style="display:none">
-        <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+    <label>Your Name</label>
+    <input id="name" placeholder="Your full name">
+
+    <label>Your Email</label>
+    <input id="email" placeholder="you@example.com">
+
+    <label>Message</label>
+    <textarea id="message" rows="6" placeholder="Write your message here..."></textarea>
+
+    <button class="btn" id="sendBtn">Send Message</button>
+
+    <p class="small" style="margin-top:14px">If the form doesn't work, email us directly at <a href="mailto:stha85620@gmail.com" style="color:#9be3ff">stha85620@gmail.com</a></p>
+    
+    <section style="margin-top:22px;background:rgba(255,255,255,0.02);padding:16px;border-radius:10px;color:rgba(255,255,255,0.9);line-height:1.6">
+      <h3 style="color:hsl(322, 100%, 92%);margin-top:0">About Our Methods</h3>
+      <p>
+        We process most calculations locally in your browser using simple and transparent methods. Numerology uses
+        classical digit reductions; zodiac placements are approximated from the birth date; interactive demos prioritize
+        privacy and do not upload your inputs. Providing an email is optional and only used to respond to your query.
       </p>
-
-      <label>Your Name</label>
-      <input type="text" name="name" placeholder="Your full name" required>
-
-      <label>Your Email</label>
-      <input type="email" name="email" placeholder="you@example.com" required>
-
-      <label>Message</label>
-      <textarea name="message" rows="6" placeholder="Write your message here..." required></textarea>
-
-      <button type="submit" class="btn">Send Message</button>
-    </form>
-
-    <p class="small" style="margin-top:14px">
-      If the form doesn't work, email us directly at 
-      <a href="mailto:stha85620@gmail.com" style="color:#9be3ff">stha85620@gmail.com</a>
-    </p>
+      <p>
+        Response policy: we aim to reply to messages within a few business days. For urgent or professional advice,
+        consult licensed experts in the relevant field.
+      </p>
+      <p>
+        For corrections or detailed methodology questions email: <a href="mailto:stha85620@gmail.com" style="color:#ffd6f0">stha85620@gmail.com</a>
+      </p>
+    </section>
   </main>
 
+  <script>
+    document.getElementById('sendBtn').addEventListener('click', ()=>{
+      const n = document.getElementById('name').value.trim();
+      const e = document.getElementById('email').value.trim();
+      const m = document.getElementById('message').value.trim();
+      if(!n||!e||!m){ return alert('Please fill all fields'); }
+      // Client-only fallback: build mailto link
+      const subject = encodeURIComponent('PPF Contact Form: ' + n);
+      const body = encodeURIComponent('Name: '+n + '\\nEmail: '+e+'\\n\\n'+m);
+      window.location.href = 'mailto:stha85620@gmail.com?subject='+subject+'&body='+body;
+    });
+  </script>
 </body>
 </html>
-
-
-
