@@ -2,10 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-  
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5381925480060973"
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5381925480060973"
   crossorigin="anonymous"></script>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Kundli Generator - PPF</title>
   <meta name="author" content="PPF Team">
@@ -21,7 +19,6 @@
     "mainEntityOfPage": {"@type":"WebPage","@id":"index.html"}
   }
   </script>
-
 <style>
   body {
     margin: 0;
@@ -95,17 +92,13 @@
     }
   </style>
 </head>
-
 <body>
   <div class="overlay"></div>
-
   <div class="container">
     <h1>Generate Kundli</h1>
-
     <div style="font-size:14px;color:rgba(255,255,255,0.85);margin-bottom:12px">
       By <strong>PPF Team</strong> — Experienced astrologers providing clear, practical readings. Short bio: We create user-friendly, educational kundli reports; our tools are for guidance and entertainment, not a substitute for professional advice.
     </div>
-
     <section id="methodology" style="margin-top:14px;background:rgba(255,255,255,0.02);padding:14px;border-radius:10px;line-height:1.6;color:rgba(255,255,255,0.9)">
       <h3 style="color:#aee2ff;margin-top:0">Methodology & Accuracy</h3>
       <p>
@@ -124,24 +117,16 @@
         Privacy & data: no data leaves your browser — all calculations run locally and temporary results are stored only if you use the site's local-history features. We provide this tool for guidance and entertainment and do not offer professional or certified advice.
       </p>
     </section>
-
     <label>Full Name</label>
     <input type="text" id="name" placeholder="Enter your name" />
-
     <label>Date of Birth</label>
     <input type="date" id="dob" />
-
     <label>Time of Birth</label>
     <input type="time" id="tob" />
-
     <button onclick="generateKundli()">Generate</button>
-
     <div id="result" class="result" style="display:none;"></div>
-
     <div class="result" id="fullChart" style="display:none; margin-top:20px; background:rgba(0,0,0,0.55); padding:20px; border-radius:15px;">
-
       <h2 style="color:#7ee8fa; text-align:center;">Full Kundli Chart</h2>
-
       <h3>12 Houses (Bhava Chart)</h3>
       <table style="width:100%; border-collapse:collapse; font-size:16px;">
         <tr><td>1st House (Lagna)</td><td>Personality, physical appearance</td></tr>
@@ -157,14 +142,10 @@
         <tr><td>11th House</td><td>Income, gains, networking</td></tr>
         <tr><td>12th House</td><td>Expenses, moksha, foreign stay</td></tr>
       </table>
-
       <br>
-
       <h3>Nakshatra (Birth Star)</h3>
       <div id="nakshatraResult"></div>
-
       <br>
-
       <h3>Dasha Periods</h3>
       <ul>
         <li>Ketu – 7 years</li>
@@ -177,19 +158,13 @@
         <li>Saturn – 19 years</li>
         <li>Mercury – 17 years</li>
       </ul>
-
       <br>
-
       <h3>Moon Sign</h3>
       <div id="moonSign"></div>
-
       <br>
-
       <h3>Mulank (Numerology)</h3>
       <div id="mulankInfo"></div>
-
       <br>
-
       <h3>Planet Characteristics by Zodiac Sign</h3>
       <table style="width:100%; border-collapse:collapse; font-size:16px;">
         <tr><td><b>Aries</b></td><td>Ruled by Mars - Leadership, courage, passion</td></tr>
@@ -205,10 +180,8 @@
         <tr><td><b>Aquarius</b></td><td>Ruled by Saturn - Innovation, idealism, humanitarian</td></tr>
         <tr><td><b>Pisces</b></td><td>Ruled by Jupiter - Spirituality, intuition, compassion</td></tr>
       </table>
-
     </div>
   </div>
-
 <script>
 /* ----------------------------
    MAIN GENERATOR
@@ -217,24 +190,19 @@ function generateKundli() {
   const name = document.getElementById("name").value;
   const dob = document.getElementById("dob").value;
   const tob = document.getElementById("tob").value;
-
   if (!name || !dob || !tob) {
     alert("Please fill all fields.");
     return;
   }
-
   const zodiac = getZodiac(dob);
   const nakshatra = getNakshatra(dob);
   const moonSignCalc = getMoonSign(dob);
-
   document.getElementById("result").style.display = "block";
   document.getElementById("fullChart").style.display = "block";
-
   const mulank = calculateMulank(dob);
   const mulankDetails = getMulankDetails(mulank);
   const nameNumber = calculateNameNumber(name);
   const destinyNumber = calculateDestinyNumber(dob);
-
   document.getElementById("result").innerHTML = `
     <b>Name:</b> ${name} (Name Number: ${nameNumber})<br>
     <b>Date of Birth:</b> ${dob}<br>
@@ -251,16 +219,13 @@ function generateKundli() {
     <b>Compatibility:</b> ${mulankDetails.compatibility}<br>
     <b>Destiny Number:</b> ${destinyNumber}<br>
   `;
-
   document.getElementById("nakshatraResult").innerHTML = `
     <b>Nakshatra (Birth Star):</b> ${nakshatra.nakshatra}<br>
     <b>Pada (Quarter):</b> ${nakshatra.pada}
   `;
-
   document.getElementById("moonSign").innerHTML = `
     <b>Moon Sign (Rashi):</b> ${moonSignCalc}
   `;
-
   document.getElementById("mulankInfo").innerHTML = `
     <b>Birth Number (Mulank):</b> ${mulank}<br>
     <b>Planetary Ruler:</b> ${mulankDetails.name}<br>
@@ -273,14 +238,12 @@ function generateKundli() {
     <b>Compatibility:</b> ${mulankDetails.compatibility}
   `;
 }
-
 /* ----------------------------
    ZODIAC SIGN (SUN SIGN)
 -----------------------------*/
 function getZodiac(date) {
   const month = new Date(date).getMonth() + 1;
   const day = new Date(date).getDate();
-
   if ((month==3 && day>=21) || (month==4 && day<=19)) return "Aries";
   if ((month==4 && day>=20) || (month==5 && day<=20)) return "Taurus";
   if ((month==5 && day>=21) || (month==6 && day<=20)) return "Gemini";
@@ -294,7 +257,6 @@ function getZodiac(date) {
   if ((month==1 && day>=20) || (month==2 && day<=18)) return "Aquarius";
   if ((month==2 && day>=19) || (month==3 && day<=20)) return "Pisces";
 }
-
 /* ----------------------------
    NAKSHATRA CALCULATION
 -----------------------------*/
@@ -302,11 +264,9 @@ function getNakshatra(date) {
   const DOB = new Date(date);
   const start = new Date("2000-01-01");
   const diffDays = Math.floor((DOB - start) / (1000 * 60 * 60 * 24));
-
   let moonDegree = (diffDays * 13.176) % 360;
   let nakshatraIndex = Math.floor(moonDegree / (13.3333));
   let pada = Math.floor((moonDegree % 13.3333) / 3.3333) + 1;
-
   const nakshatras = [
     "Ashwini","Bharani","Krittika","Rohini","Mrigashira",
     "Ardra","Punarvasu","Pushya","Ashlesha","Magha","Purva Phalguni",
@@ -314,28 +274,23 @@ function getNakshatra(date) {
     "Jyeshtha","Mula","Purva Ashadha","Uttara Ashadha","Shravana",
     "Dhanishta","Shatabhisha","Purva Bhadrapada","Uttara Bhadrapada","Revati"
   ];
-
   return {
     nakshatra: nakshatras[nakshatraIndex],
     pada: pada
   };
 }
-
 /* ----------------------------
    MULANK CALCULATION
 -----------------------------*/
 function calculateMulank(date) {
   const dob = new Date(date);
   const day = dob.getDate();
-  
-  let mulank = day;
-  
-  // For double digits, add them together (range 1-11)
+    let mulank = day;
+    // For double digits, add them together (range 1-11)
   if (mulank >= 10) {
     mulank = Math.floor(mulank / 10) + (mulank % 10);
   }
-  
-  return mulank;
+    return mulank;
 }
 
 function getMulankDetails(mulank) {
@@ -620,5 +575,6 @@ alert("Incorrect username or password!");
 
 </body>
 </html>
+
 
 
