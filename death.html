@@ -1,11 +1,9 @@
-
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5381925480060973"
   crossorigin="anonymous"></script>
-
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Death Age Predictor — PPF</title>
   <meta name="author" content="PPF Team">
@@ -60,11 +58,9 @@
       <label>Alcohol</label>
       <select id="alc"><option value="no">No</option><option value="occasional">Occasional</option><option value="regular">Regular</option></select>
       <button class="btn" id="runBtn">Estimate</button>
-
       <div id="out" class="result" style="display:none"></div>
     </div>
   </div>
-
   <div class="wrap" style="max-width:800px;margin:18px auto;padding:0">
     <div style="background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;color:rgba(255,255,255,0.92);line-height:1.6">
       <h3 style="color:#aee2ff;margin-top:0">Methodology & Accuracy</h3>
@@ -85,7 +81,6 @@
       </p>
     </div>
   </div>
-
 <script>
 document.getElementById('runBtn').addEventListener('click', ()=>{
   const age = Number(document.getElementById('age').value) || 25;
@@ -105,7 +100,6 @@ document.getElementById('runBtn').addEventListener('click', ()=>{
   out.innerHTML = `Estimated lifespan: <strong>${low} - ${high} years</strong><br/>Advice: Improve diet, reduce smoking/alcohol, exercise regularly for better health.`;
   saveHistory('death',{age,diet,smoke,alc,low,high});
 });
-
 function saveHistory(type,obj){
   try{
     const logged = JSON.parse(localStorage.getItem('ppf_logged')||'null'); if(!logged) return;
@@ -116,4 +110,5 @@ function saveHistory(type,obj){
 </script>
 </body>
 </html>
+
 
