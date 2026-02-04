@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8"/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5381925480060973"
-     crossorigin="anonymous"></script>
-
+     crossorigin="anonymous">
+         </script>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Love Cosmic — PPF</title>
   <meta name="author" content="PPF Team">
@@ -42,7 +42,6 @@
       <div><strong>PPF</strong><div style="font-size:12px;color:rgba(255,255,255,0.7)">Love Cosmic</div></div>
       <div><button class="btn" onclick="location.href='index.html'">Home</button></div>
     </div>
-
     <div class="card">
       <h2>Love Cosmic — Compatibility</h2>
       <div style="font-size:14px;color:rgba(255,255,255,0.85);margin-bottom:12px">
@@ -56,17 +55,14 @@
           <label>Person B DOB</label><input id="b_dob" type="date">
           <button class="btn" id="calcBtn">Calculate</button>
         </div>
-
         <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
           <canvas id="pie" width="260" height="260"></canvas>
           <div style="font-size:18px">Compatibility: <strong id="pct">—</strong></div>
         </div>
       </div>
-
       <div id="explain" style="margin-top:12px;background:rgba(0,0,0,0.4);padding:10px;border-radius:10px;display:none"></div>
     </div>
   </div>
-
   <div class="wrap" style="max-width:1000px;margin:18px auto;padding:0">
     <div style="background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;color:rgba(255,255,255,0.92);line-height:1.6">
       <h3 style="color:#aee2ff;margin-top:0">Methodology & Accuracy</h3>
@@ -84,7 +80,6 @@
       </p>
     </div>
   </div>
-
 <script>
 const ctx = document.getElementById('pie').getContext('2d');
 let chart = null;
@@ -104,7 +99,6 @@ function getZodiac(date){
     else{ if(m===sm && day>=sd) return zz; if(m===em && day<=ed) return zz; if(m>sm && m<em) return zz; }
   } return null;
 }
-
 document.getElementById('calcBtn').addEventListener('click', ()=>{
   const a=document.getElementById('a_name').value.trim(), ad=document.getElementById('a_dob').value;
   const b=document.getElementById('b_name').value.trim(), bd=document.getElementById('b_dob').value;
@@ -122,7 +116,6 @@ document.getElementById('calcBtn').addEventListener('click', ()=>{
   document.getElementById('explain').innerText = `Based on elements (${z1?z1.name:'Unknown'} & ${z2?z2.name:'Unknown'}) and name similarity. This is an approximate compatibility score for fun.`;
   saveHistory('love',{a,ad,b,bd,pct});
 });
-
 function saveHistory(type,obj){
   try{ const logged = JSON.parse(localStorage.getItem('ppf_logged')||'null'); if(!logged) return;
     const users = JSON.parse(localStorage.getItem('ppf_users')||'[]'); const idx = users.findIndex(u=>u.username===logged.username || u.email===logged.email);
@@ -132,5 +125,6 @@ function saveHistory(type,obj){
 </script>
 </body>
 </html>
+
 
 
