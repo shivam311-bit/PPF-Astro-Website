@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,6 +8,19 @@
 
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Death Age Predictor — PPF</title>
+  <meta name="author" content="PPF Team">
+  <meta name="description" content="A fun, privacy-first death age estimator using lifestyle inputs for illustrative purposes. Not a predictive medical tool; for entertainment only." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Death Age Predictor — PPF",
+    "description": "A lighthearted death age estimator that uses diet, habits and wellness inputs to produce illustrative outcomes. Results are for entertainment and reflection, not medical prediction.",
+    "author": {"@type":"Person","name":"PPF Team"},
+    "publisher": {"@type":"Organization","name":"PPF","logo":{"@type":"ImageObject","url":"astrologo.webp"}},
+    "mainEntityOfPage": {"@type":"WebPage","@id":"death.html"}
+  }
+  </script>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;font-family:'Poppins',sans-serif}
@@ -30,6 +44,9 @@
 
     <div class="card">
       <h2>Death Age Predictor (Fun)</h2>
+      <div style="font-size:14px;color:rgba(255,255,255,0.85);margin-bottom:12px">
+        By <strong>PPF Team</strong> — A light, educational estimator using simple lifestyle heuristics. Not a medical or certified prediction tool.
+      </div>
       <label>Current Age</label><input id="age" type="number" min="1" max="120" placeholder="e.g., 25">
       <label>Diet</label>
       <select id="diet">
@@ -45,6 +62,27 @@
       <button class="btn" id="runBtn">Estimate</button>
 
       <div id="out" class="result" style="display:none"></div>
+    </div>
+  </div>
+
+  <div class="wrap" style="max-width:800px;margin:18px auto;padding:0">
+    <div style="background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;color:rgba(255,255,255,0.92);line-height:1.6">
+      <h3 style="color:#aee2ff;margin-top:0">Methodology & Accuracy</h3>
+      <p>
+        This Death Age Predictor provides a simple, educational estimate based on a handful of user-provided lifestyle inputs (diet, smoking, alcohol use and current age). The page uses a baseline average lifespan (a conservative reference value) and applies small adjustments for high-risk habits such as regular smoking or heavy alcohol use, as well as penalties for consistently unhealthy diet choices. Randomized variation is added to the output to produce a plausible range rather than a single fixed number.
+      </p>
+      <p>
+        Accuracy and limitations: this tool is intentionally basic and should be treated as illustrative rather than predictive. Real-life longevity is influenced by genetics, long-term medical history, environment, socioeconomic factors, healthcare access, mental health, exercise, sleep, and many other variables not captured here. Precise mortality or life-expectancy estimates require detailed health models, longitudinal medical data, and actuarial/statistical analysis performed by qualified health professionals.
+      </p>
+      <p>
+        Responsible use: consider these outcomes as prompts for reflection and motivation to adopt healthier habits rather than deterministic forecasts. If you have health concerns or are making important life decisions based on health projections, consult medical professionals and certified statisticians. The advice shown after estimates (improve diet, reduce smoking/alcohol, exercise) are general public-health recommendations and not personalized medical guidance.
+      </p>
+      <p>
+        Privacy & data handling: all calculations run locally in your browser; no personal data or images are sent to external servers. If you are logged in and save history, only the small numeric results and selected inputs are stored locally in your browser's `localStorage`. We do not collect or transmit sensitive health data from this tool.
+      </p>
+      <p>
+        Technical note: this estimator is useful for engagement and education but lacks the statistical rigor of actuarial or clinical models. Use the tool for self-awareness and habit improvement; for precise, individualized risk assessments, seek professional evaluation.
+      </p>
     </div>
   </div>
 
@@ -78,5 +116,4 @@ function saveHistory(type,obj){
 </script>
 </body>
 </html>
-
 
