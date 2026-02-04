@@ -39,7 +39,6 @@
       <div><strong>PPF</strong> <div style="font-size:12px;color:rgba(255,255,255,0.7)">Palm Scan</div></div>
       <div><button class="btn" onclick="location.href='index.html'">Home</button></div>
     </div>
-
     <div class="card">
       <h2>Palm Scan (Camera)</h2>
       <div style="font-size:14px;color:rgba(255,255,255,0.85);margin-bottom:12px">
@@ -60,8 +59,7 @@
         </div>
       </div>
     </div>
-  
-  <div class="wrap" style="max-width:1000px;margin:18px auto;padding:0">
+    <div class="wrap" style="max-width:1000px;margin:18px auto;padding:0">
     <div style="background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;color:rgba(255,255,255,0.92);line-height:1.6">
       <h3 style="color:#aee2ff;margin-top:0">Methodology & Accuracy</h3>
       <p>
@@ -82,24 +80,20 @@
     </div>
   </div>
   </div>
-
 <script>
 let stream = null;
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-
 document.getElementById('startBtn').addEventListener('click', async ()=>{
   try{
     stream = await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}, audio:false});
     video.srcObject = stream;
   }catch(e){ alert('Camera access denied or unavailable'); }
 });
-
 document.getElementById('stopBtn').addEventListener('click', ()=>{
   if(stream){ stream.getTracks().forEach(t=>t.stop()); video.srcObject=null; }
 });
-
 document.getElementById('captureBtn').addEventListener('click', ()=>{
   if(!video.videoWidth) return alert('Camera not ready');
   canvas.width = video.videoWidth; canvas.height = video.videoHeight;
@@ -115,7 +109,6 @@ document.getElementById('captureBtn').addEventListener('click', ()=>{
   document.getElementById('out').innerText = `Love Age ≈ ${loveAge} · Marriage Age ≈ ${marryAge} · Estimated Life ≈ ${deathAge}`;
   saveHistory('palm',{loveAge,marryAge,deathAge});
 });
-
 function saveHistory(type,obj){
   try{
     const logged = JSON.parse(localStorage.getItem('ppf_logged')||'null'); if(!logged) return;
@@ -126,3 +119,4 @@ function saveHistory(type,obj){
 </script>
 </body>
 </html>
+
