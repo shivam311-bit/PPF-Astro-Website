@@ -7,6 +7,19 @@
 
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Love Cosmic — PPF</title>
+  <meta name="author" content="PPF Team">
+  <meta name="description" content="Fun compatibility and cosmic elements calculator — compare two people by zodiac elements and name similarity. For guidance and entertainment; not a substitute for professional astrology." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Love Cosmic — Compatibility",
+    "description": "A lightweight compatibility calculator combining zodiac element matching and name similarity to provide an engaging compatibility score.",
+    "author": {"@type":"Person","name":"PPF Team"},
+    "publisher": {"@type":"Organization","name":"PPF","logo":{"@type":"ImageObject","url":"astrologo.webp"}},
+    "mainEntityOfPage": {"@type":"WebPage","@id":"cosmiclove.html"}
+  }
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
@@ -32,6 +45,9 @@
 
     <div class="card">
       <h2>Love Cosmic — Compatibility</h2>
+      <div style="font-size:14px;color:rgba(255,255,255,0.85);margin-bottom:12px">
+        By <strong>PPF Team</strong> — Simple, educational compatibility tool combining zodiac element matching and name-similarity heuristics. For guidance and entertainment; not a replacement for a professional relationship reading.
+      </div>
       <div class="row">
         <div>
           <label>Person A Name</label><input id="a_name" placeholder="Name A">
@@ -48,6 +64,24 @@
       </div>
 
       <div id="explain" style="margin-top:12px;background:rgba(0,0,0,0.4);padding:10px;border-radius:10px;display:none"></div>
+    </div>
+  </div>
+
+  <div class="wrap" style="max-width:1000px;margin:18px auto;padding:0">
+    <div style="background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;color:rgba(255,255,255,0.92);line-height:1.6">
+      <h3 style="color:#aee2ff;margin-top:0">Methodology & Accuracy</h3>
+      <p>
+        This tool uses two lightweight, transparent techniques to produce a quick compatibility indicator: zodiac element matching and a simple name-similarity metric. Zodiac element matching groups sun signs into the classical four elements (Fire, Earth, Air, Water) and assigns higher scores when partners share or form traditionally harmonious element pairs (for example, Fire+Air). Name similarity measures overlap of unique letters in the two names after removing non-alphabetic characters, producing a small contribution to the final score to reflect perceived personal resonance.
+      </p>
+      <p>
+        Accuracy notes: the calculations are intentionally simplified for speed and privacy — they do not compute precise natal charts, horoscopes, synastry aspects, or planetary positions. Full astrological compatibility (synastry) requires exact birth times, geographic coordinates, and ephemeris-based calculations to compare the positions of all planets and houses. Our element-based approach is educational and designed to create engaging, easy-to-understand results rather than provide technical astrological analysis.
+      </p>
+      <p>
+        How to interpret results: treat the percentage as a playful, high-level indicator of compatibility rather than a deterministic outcome. Higher percentages indicate more harmonizing element patterns and stronger name similarity; lower percentages suggest potential energetic differences that may need conscious work. For relationship decisions, consult a professional astrologer or counselor who can perform a detailed synastry reading using full charts.
+      </p>
+      <p>
+        Privacy & usage: all calculations run locally in your browser and no personal data is transmitted to external servers. We store history only in localStorage if you are logged in and opt to save results. This tool is intended for entertainment and self-reflection; it should not replace professional advice in matters like mental health, legal disputes, or major life choices.
+      </p>
     </div>
   </div>
 
@@ -79,7 +113,7 @@ document.getElementById('calcBtn').addEventListener('click', ()=>{
   const elemScore = (e1===e2?20: ( (e1==='Fire'&&e2==='Air')||(e1==='Air'&&e2==='Fire')?16:10 ));
   const nscore = nameSim(a,b);
   const base = elemScore + nscore + 30;
-  const pct = Math.min(98, Math.round(base/1.6));
+  const pct = Math.round((80 + (base - 52) / 28 * 20) * 100) / 100;
   document.getElementById('pct').innerText = pct + '%';
   const other = 100 - pct;
   if(chart) chart.destroy();
@@ -98,6 +132,5 @@ function saveHistory(type,obj){
 </script>
 </body>
 </html>
-
 
 
