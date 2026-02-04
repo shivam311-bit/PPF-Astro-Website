@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5381925480060973"
-  crossorigin="anonymous"></script>
+  crossorigin="anonymous">
+      </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Kundli Generator - PPF</title>
   <meta name="author" content="PPF Team">
@@ -292,7 +293,6 @@ function calculateMulank(date) {
   }
     return mulank;
 }
-
 function getMulankDetails(mulank) {
   const details = {
     1: {
@@ -406,10 +406,8 @@ function getMulankDetails(mulank) {
       compatibility: "Compatible with 11, 2, 7; thrives with emotionally intelligent partners."
     }
   };
-  
-  return details[mulank] || { name: "Unknown", personality: "Cosmic influence", strengths: "—", weaknesses: "—", career: "—", relationships: "—", lucky: "—", compatibility: "—" };
+    return details[mulank] || { name: "Unknown", personality: "Cosmic influence", strengths: "—", weaknesses: "—", career: "—", relationships: "—", lucky: "—", compatibility: "—" };
 }
-
 /* ----------------------------
    NAME NUMBER CALCULATION
 -----------------------------*/
@@ -419,19 +417,15 @@ function calculateNameNumber(name) {
     'J': 1, 'K': 2, 'L': 3, 'M': 4, 'N': 5, 'O': 6, 'P': 7, 'Q': 8, 'R': 9,
     'S': 1, 'T': 2, 'U': 3, 'V': 4, 'W': 5, 'X': 6, 'Y': 7, 'Z': 8
   };
-  
-  let sum = 0;
+    let sum = 0;
   for (let char of name.toUpperCase()) {
     if (nameMap[char]) sum += nameMap[char];
   }
-  
-  while (sum >= 10) {
+    while (sum >= 10) {
     sum = Math.floor(sum / 10) + (sum % 10);
   }
-  
-  return sum;
+    return sum;
 }
-
 /* ----------------------------
    DESTINY NUMBER CALCULATION
 -----------------------------*/
@@ -440,17 +434,13 @@ function calculateDestinyNumber(date) {
   const day = dob.getDate();
   const month = dob.getMonth() + 1;
   const year = dob.getFullYear();
-  
-  const sum = day + month + year;
+    const sum = day + month + year;
   let destiny = sum;
-  
   while (destiny >= 10) {
     destiny = Math.floor(destiny / 10) + (destiny % 10);
   }
-  
-  return destiny;
+    return destiny;
 }
-
 /* ----------------------------
    MOON SIGN (RASHI)
 -----------------------------*/
@@ -458,9 +448,7 @@ function getMoonSign(date) {
   const DOB = new Date(date);
   const base = new Date("2000-01-01");
   const diff = Math.floor((DOB - base) / (1000 * 60 * 60 * 24));
-
   let moonDegree = (diff * 13.176) % 360;
-
   if (moonDegree < 30) return "Aries";
   if (moonDegree < 60) return "Taurus";
   if (moonDegree < 90) return "Gemini";
@@ -479,31 +467,21 @@ function getMoonSign(date) {
 function getDailyLuckyData() {
 const today = new Date().toISOString().split('T')[0];
 let saved = localStorage.getItem('luckyData');
-
-
 if (saved) {
 saved = JSON.parse(saved);
 if (saved.date === today) return saved; // return saved data for today
 }
-
-
 const colors = ["Blue", "Red", "Green", "Purple", "Black", "White", "Yellow", "Orange", "Pink", "Silver", "Gold"];
 const times = ["6 AM - 8 AM", "9 AM - 11 AM", "1 PM - 3 PM", "4 PM - 6 PM", "7 PM - 9 PM"];
-
-
 const luckyData = {
 date: today,
 color: colors[Math.floor(Math.random() * colors.length)],
 number: Math.floor(Math.random() * 99) + 1,
 time: times[Math.floor(Math.random() * times.length)]
 };
-
-
 localStorage.setItem('luckyData', JSON.stringify(luckyData));
 return luckyData;
 }
-
-
 // Display Lucky Table
 function displayLuckyTable() {
 const lucky = getDailyLuckyData();
@@ -517,28 +495,18 @@ const table = `
 `;
 document.getElementById('luckyTable').innerHTML = table;
 }
-
-
 // Registration & Login
 function registerUser() {
 const user = document.getElementById('regUser').value;
 const pass = document.getElementById('regPass').value;
 if (!user || !pass) return alert("Fill all details");
-
-
 localStorage.setItem('kundliUser', JSON.stringify({ user, pass }));
 alert("Registration Successful!");
 }
-
-
 function loginUser() {
 const user = document.getElementById('logUser').value;
 const pass = document.getElementById('logPass').value;
-
-
 const saved = JSON.parse(localStorage.getItem('kundliUser'));
-
-
 if (saved && saved.user === user && saved.pass === pass) {
 document.getElementById('loginBox').style.display = 'none';
 document.getElementById('luckySection').style.display = 'block';
@@ -548,33 +516,25 @@ alert("Incorrect username or password!");
 }
 }
 </script>
-
-
 <!-- Login/Register System -->
 <div id="loginBox" style="margin:30px auto; width:90%; max-width:500px; background:rgba(255,255,255,0.15); padding:20px; border-radius:15px;">
 <h2 style="text-align:center; color:#7ee8fa;">Login to View Today's Luck</h2>
-
-
 <h3>Register</h3>
 <input type="text" id="regUser" placeholder="Create username">
 <input type="password" id="regPass" placeholder="Create password" style="margin-top:10px;">
 <button onclick="registerUser()">Register</button>
-
-
 <h3 style="margin-top:25px;">Login</h3>
 <input type="text" id="logUser" placeholder="Enter username">
 <input type="password" id="logPass" placeholder="Enter password" style="margin-top:10px;">
 <button onclick="loginUser()">Login</button>
 </div>
-
-
 <!-- Lucky Table (Visible After Login) -->
 <div id="luckySection" style="display:none; width:90%; max-width:500px; margin:20px auto; background:rgba(255,255,255,0.15); padding:20px; border-radius:15px;">
 <div id="luckyTable"></div>
 </div>
-
 </body>
 </html>
+
 
 
 
